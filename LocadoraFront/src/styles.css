@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: var(--cor-span-logo);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--cor-botao);
+	border-radius: 5px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import "primeicons/primeicons.css";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+:root{
+  --cor-fundo : #146C94;
+  --cor-bloco : #1685A4;
+  --cor-texto-secundario : #F6F1F1;
+  --cor-texto-destaque : #FFFFFF;
+  --cor-botao : #00425A;
+  --cor-span-logo : #AFD3E2;
+  --font-primaria : 'Poppins', sans-serif;
+	--font-secundaria : 'Roboto', sans-serif;
+}
+
+body {
+	background-color: var(--cor-fundo);
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
