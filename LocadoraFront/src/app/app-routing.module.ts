@@ -7,6 +7,7 @@ import { LoginComponent } from './telas/login/login.component';
 import { StepOneComponent } from './telas/registro/step-one/step-one.component';
 import { StepTwoComponent } from './telas/registro/step-two/step-two.component';
 import { StepThreeComponent } from './telas/registro/step-three/step-three.component';
+import { HomeUsuComponent } from './telas/usuario/home-usu/home-usu.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'stepOne', component: StepOneComponent },
   {path: 'stepTwo', component: StepTwoComponent },
   {path: 'stepThree', component:  StepThreeComponent },
+  {path: 'lobby', component:  HomeUsuComponent },
 ];
 
 @NgModule({

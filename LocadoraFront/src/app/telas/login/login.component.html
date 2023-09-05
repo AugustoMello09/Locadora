@@ -15,6 +15,7 @@
           <span class="text-custom-botao font-font-secundaria font-bold text-sm" *ngIf="loginForm.controls['email']?.errors?.['minlength']">O campo Login deve ter um email válido.</span>
         </div>
       </div>
+      
       <div class="text-center">
         <h4 class="text-custom-font-secundario text-lg font-font-secundaria font-bold p-3">Senha</h4>
         <p-password name="password" [(ngModel)]="login.password" [toggleMask]="true" minlength="2" maxlength="24" ngModel required></p-password>
@@ -24,7 +25,6 @@
       </div>
       
       <div class="flex flex-col items-center">
-        <a class="text-custom-font-secundario text-sm font-font-secundaria font-bold p-3 border">Esqueci a senha</a>
         <button type="submit" class="bg-custom-botao w-1/2 text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 m-4 rounded-2xl">Entrar</button>
         <p-messages [value]="message1" class="mx-4"></p-messages>
       </div>

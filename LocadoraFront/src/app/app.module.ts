@@ -21,6 +21,10 @@ import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { ValidandoCepDirective } from './validando-cep.directive';
+import { HomeUsuComponent } from './telas/usuario/home-usu/home-usu.component';
+import { HeaderComponent } from './telas/usuario/templates/header/header.component';
+import { FooterComponent } from './telas/usuario/templates/footer/footer.component';
+
 
 
 
@@ -33,7 +37,10 @@ import { ValidandoCepDirective } from './validando-cep.directive';
     StepOneComponent,
     StepTwoComponent,
     StepThreeComponent,
-    ValidandoCepDirective
+    ValidandoCepDirective,
+    HomeUsuComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

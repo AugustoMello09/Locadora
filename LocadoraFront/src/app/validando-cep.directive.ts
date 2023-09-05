@@ -4,7 +4,7 @@ import { ConsultaCepService } from './service/consulta-cep.service';
 import { Observable, map } from 'rxjs';
 
 @Directive({
-  selector: '[appValidandoCep]',
+  selector: '[validadorCep]',
   providers: [{
     provide: NG_ASYNC_VALIDATORS,
     useExisting: ValidandoCepDirective,

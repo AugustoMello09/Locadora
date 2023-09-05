@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         if (userRoles.includes('ROLE_ADMIN')) {
           this.router.navigate(['']);
         } else {
-          this.router.navigate(['']);
+          this.router.navigate(['/lobby']);
         }
       }, (err:  HttpErrorResponse) => {
         this.addMessage(err);
