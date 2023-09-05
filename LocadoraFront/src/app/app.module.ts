@@ -11,18 +11,22 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { InicioComponent } from './telas/inicio/inicio.component';
 import { LoginComponent } from './telas/login/login.component';
-
+import { StepOneComponent } from './telas/registro/step-one/step-one.component';
+import { StepTwoComponent } from './telas/registro/step-two/step-two.component';
 
 import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     InicioComponent,
-    LoginComponent
+    LoginComponent,
+    StepOneComponent,
+    StepTwoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,63 @@
+
+  
+    
+    <main class="absolute m-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        
+      <header class="text-center">
+        <h2 class="text-custom-font-destaque text-2xl font-font-primaria font-bold">Loque<span class="text-custom-span">Dog</span></h2>
+      </header>
+  
+        <div class="flex items-center justify-center  flex-col">
+          <div>
+            <p class="text-custom-font-secundario text-base font-font-secundaria font-semibold p-2">Para iniciar seu cadastrado, precisamos de algumas informações pessoais. Por favor, informe seu nome completo, endereço de e-mail, número de CPF e senha.</p>
+          </div>
+          
+          <form #f="ngForm" class="text-center">
+              
+            <div class="flex flex-col items-center">
+                
+                <label for="name" class="text-custom-font-secundario text-lg font-font-secundaria font-semibold">Nome</label>
+                <input name="name" [(ngModel)]="user.name" type="text" minlength="2" maxlength="50"  ngModel required pInputText placeholder="Ex. José"/>
+                <div *ngIf="(f.controls['name']?.invalid && f.controls['name']?.touched) || f.controls['name']?.dirty">
+                  <span class="text-custom-botao font-font-secundaria font-bold text-sm" *ngIf="f.controls['name']?.errors?.['required']">O campo Nome deve ser preenchido.</span>
+                  <span class="text-custom-botao font-font-secundaria font-bold text-sm" *ngIf="f.controls['name']?.errors?.['minlength']">O campo Nome deve ter no mínimo 2 números.</span>
+                </div>
+            
+                <label for="email" class="text-custom-font-secundario text-lg font-font-secundaria font-semibold">Email</label>
+                <input name="email" [(ngModel)]="user.email" type="text" maxlength="64"  ngModel required type="text" pInputText placeholder="Ex. SeuEmail@gmail.com"/>
+                <div *ngIf="(f.controls['email']?.invalid && f.controls['email']?.touched) || f.controls['email']?.dirty">
+                  <span class="text-custom-botao font-font-secundaria font-bold text-sm" *ngIf="f.controls['email']?.errors?.['required']">O campo Email deve ser preenchido.</span>
+                </div>
+              
+                <label for="password" class="text-custom-font-secundario text-lg font-font-secundaria font-semibold">Password</label>
+                <p-password name="password" [(ngModel)]="user.password" [toggleMask]="true"  minlength="3" maxlength="24"  ngModel type="text" required placeholder="Ex. 123456"></p-password>
+                <div *ngIf="(f.controls['password']?.invalid && f.controls['password']?.touched) || f.controls['password']?.dirty">
+                  <span class="text-custom-botao font-font-secundaria font-bold text-sm" *ngIf="f.controls['password']?.errors?.['required']">O campo Senha deve ser preenchido.</span>
+                  <span class="text-custom-botao font-font-secundaria font-bold text-sm" *ngIf="f.controls['password']?.errors?.['minlength']">O campo Senha deve ter no mínimo 2 números.</span>
+                </div>
+            
+                <label for="cpf" class="text-custom-font-secundario text-lg font-font-secundaria font-semibold">CPF</label>
+                <input name="cpf" [(ngModel)]="user.cpf" type="text" maxlength="14"  ngModel required type="text" pInputText placeholder="Ex. 789.456.123-02"/>
+                <div *ngIf="(f.controls['cpf']?.invalid && f.controls['cpf']?.touched) || f.controls['cpf']?.dirty">
+                  <span class="text-custom-botao font-font-secundaria font-bold text-sm" *ngIf="f.controls['cpf']?.errors?.['required']">O campo CPF deve ser preenchido.</span>
+                </div>
+    
+              </div>
+              
+              <div>
+                <button (click)="create()" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 rounded-2xl mt-4">Próximo</button>
+                <p-messages [value]="message1" class="mx-4"></p-messages>
+              </div>
+          
+            </form>
+            
+            <div class="text-center">
+              <i routerLink="/inicio" class="text-custom-span p-4 pi pi-angle-left"></i>
+            </div>
+        </div>
+       
+        
+        </main>
+  
+  
+  
