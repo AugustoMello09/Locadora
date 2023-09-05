@@ -1,1 +1,47 @@
-<p>step-two works!</p>
+<main class="absolute m-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    
+  <div class="flex item-center justify-center flex-col">
+
+    <header class="text-center">
+      <h2 class="text-custom-font-destaque font-font-primaria font-bold text-3xl">Loque<span class="text-custom-span">Dog</span></h2>
+    </header> 
+
+    <div class="text-center">
+      <p class="text-custom-font-secundario font-font-secundaria font-semibold text-lg p-4">Por favor, informe sua cidade e estado de residência atual.</p>
+    </div>
+      
+    <form #f="ngForm">
+        
+      <div class="flex flex-col items-center justify-center text-center">
+
+        <div class="flex flex-col">
+          
+          <label for="uf" class="text-custom-font-destaque font-font-secundaria font-semibold text-lg p-4">Estado</label>
+          <p-dropdown [options]="estadoLista" optionValue="id" [(ngModel)]="estadoCidadeSelecionada.estadoId.id" name="estado" optionLabel="nome"  placeholder="Selecione o estado" (onChange)="getBuscaCidade($event)"></p-dropdown>
+        
+        </div>
+        
+        <div class="flex flex-col "> 
+          
+          <label for="municipios" class="text-custom-font-destaque font-font-secundaria font-semibold text-lg p-4">Cidade</label>
+          
+          <p-dropdown [options]="cidadeLista" optionValue="nome" [(ngModel)]="estadoCidadeSelecionada.name" name="cidade" optionLabel="nome" placeholder="Selecione a cidade"></p-dropdown>
+          
+
+        </div>
+
+        <div>
+          <button (click)="enviarDados()" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 m-4 rounded-2xl">Próximo</button>
+        </div>
+
+      </div>
+
+      </form>
+
+      <div class="text-center">
+        <i routerLink="/stepTwo" class="text-custom-span  p-4 pi pi-angle-left" style="font-size: 2rem"></i>
+      </div>
+ 
+  </div>
+
+</main>

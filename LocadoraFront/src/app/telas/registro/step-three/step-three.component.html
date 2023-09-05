@@ -1,0 +1,71 @@
+
+  
+  
+  <main class="absolute m-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">  
+
+    <header class="text-center">
+      <h2 class="text-custom-font-destaque text-2xl font-font-primaria font-bold">Loque<span class="text-custom-span">Dog</span></h2>
+    </header>
+    
+    <div class="flex items-center justify-center flex-col h-full">
+
+      <div>
+        <p class="text-custom-font-secundario text-sm font-font-secundaria font-semibold p-2">Agora, gostaríamos de obter algumas informações adicionais para completar o seu cadastro. Por favor, informe nos campos abaixo.</p>
+      </div>
+
+      <form #f="ngForm" (submit)="onSubmit()" class="text-center">
+          
+        <div class="flex flex-col items-center text-center">
+          
+            <label for="cep" class="text-custom-font-secundario text-lg font-font-secundaria font-semibold">Cep</label>
+            <input name="cep" minlength="2" maxlength="9" validadorCep ngModel required #cep="ngModel" (blur)="consultaCep($event, f)" [(ngModel)]="endereco.cep" placeholder="Ex. 19789-074" type="text" pInputText class="btn-input"/>
+              <div *ngIf="(f.controls['cep']?.invalid && f.controls['cep']?.touched) || f.controls['cep']?.dirty">
+                <span class="erro__texto" *ngIf="f.controls['cep']?.errors?.['required']">O campo cep deve ser preenchido.</span>
+                <span class="erro__texto" *ngIf="f.controls['cep']?.errors?.['minlength']">O campo cep deve ter no mínimo 2 números.</span>
+                <span class="erro__texto" *ngIf="f.controls['cep']?.errors?.['validadorCep']">O campo cep inválido.</span>
+              </div>
+            
+            <label for="numero" class="text-custom-font-secundario text-lg font-font-secundaria font-semibold p-2">Número</label>
+            <input name="numero" minlength="2" maxlength="5" ngModel required placeholder="Ex. 164" type="text"  [(ngModel)]="endereco.numero" pInputText class="btn-input"/>
+              <div *ngIf="(f.controls['numero']?.invalid && f.controls['numero']?.touched) || f.controls['numero']?.dirty">
+                <span class="erro__texto" *ngIf="f.controls['numero']?.errors?.['required']">O campo número deve ser preenchido.</span>
+                <span class="erro__texto" *ngIf="f.controls['numero']?.errors?.['minlength']">O campo número deve ter no mínimo 2 números.</span>
+              </div>
+                    
+              <label for="complemento" class="text-custom-font-secundario text-lg font-font-secundaria font-semibold p-2">Complemento</label>
+              <input name="complemento" placeholder="Ex. casa"  [(ngModel)]="endereco.complemento" type="text" pInputText class="btn-input"/>
+            
+              <label for="bairro" class="text-custom-font-secundario text-lg font-font-secundaria font-semibold p-2">Bairro</label>
+              <input name="bairro" minlength="2" maxlength="24" ngModel required placeholder="Ex. São Bento"  [(ngModel)]="endereco.bairro" type="text" pInputText class="btn-input"/>
+              <div *ngIf="(f.controls['bairro']?.invalid && f.controls['bairro']?.touched) || f.controls['bairro']?.dirty">
+                <span class="erro__texto" *ngIf="f.controls['bairro']?.errors?.['required']">O campo bairro deve ser preenchido.</span>
+                <span class="erro__texto" *ngIf="f.controls['bairro']?.errors?.['minlength']">O campo bairro deve ter no mínimo 2 números.</span>
+              </div>
+           
+
+              <label for="logradouro" class="text-custom-font-secundario text-lg font-font-secundaria font-semibold p-2">Rua</label>
+              <input name="logradouro" minlength="2" maxlength="45" ngModel required placeholder="Ex. Rua Davi" type="text" pInputText  [(ngModel)]="endereco.logradouro" class="btn-input"/>
+              <div *ngIf="(f.controls['logradouro']?.invalid && f.controls['logradouro']?.touched) || f.controls['logradouro']?.dirty">
+                <span class="erro__texto" *ngIf="f.controls['logradouro']?.errors?.['required']">O campo logradouro deve ser preenchido.</span>
+                <span class="erro__texto" *ngIf="f.controls['logradouro']?.errors?.['minlength']">O campo logradouro deve ter no mínimo 2 números.</span>
+              </div>
+        
+            <div>
+              <button type="submit" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 rounded-2xl mt-4 w-full">Finalizar</button>
+              <p-messages [value]="message1" class="mx-4"></p-messages>
+            </div>
+
+        </div>
+        
+     </form>
+     
+     <div class="text-center">
+      <i routerLink="/stepTwo" class="text-custom-span pi pi-angle-left" style="font-size: 1rem"></i>
+    </div>
+
+    </div>
+
+</main>
+  
+
+

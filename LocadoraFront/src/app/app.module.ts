@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 
 import { AuthService } from './service/auth.service';
@@ -13,10 +14,14 @@ import { InicioComponent } from './telas/inicio/inicio.component';
 import { LoginComponent } from './telas/login/login.component';
 import { StepOneComponent } from './telas/registro/step-one/step-one.component';
 import { StepTwoComponent } from './telas/registro/step-two/step-two.component';
+import { StepThreeComponent } from './telas/registro/step-three/step-three.component';
 
 import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { ValidandoCepDirective } from './validando-cep.directive';
+
 
 
 @NgModule({
@@ -26,16 +31,20 @@ import { InputTextModule } from 'primeng/inputtext';
     InicioComponent,
     LoginComponent,
     StepOneComponent,
-    StepTwoComponent
+    StepTwoComponent,
+    StepThreeComponent,
+    ValidandoCepDirective
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     MessagesModule,
     PasswordModule,
     FormsModule,
     HttpClientModule,
-    InputTextModule
+    InputTextModule,
+    DropdownModule
   ],
   providers: [
     AuthService,
