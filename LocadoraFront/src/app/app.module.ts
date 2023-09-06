@@ -21,12 +21,20 @@ import { HeaderComponent } from './telas/usuario/templates/header/header.compone
 import { FooterComponent } from './telas/usuario/templates/footer/footer.component';
 import { FilmeComponent } from './telas/usuario/filme/filme.component';
 import { FilmeinfoComponent } from './telas/usuario/filme/filmeinfo/filmeinfo.component';
+import { ReservaComponent } from './telas/usuario/reserva/reserva.component';
+import { CreateComponent } from './telas/usuario/reserva/create/create.component';
+import { ReservainfoComponent } from './telas/usuario/reserva/reservainfo/reservainfo.component';
+
 
 import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
+import { CalendarModule } from 'primeng/calendar';
+import { InputNumberModule } from 'primeng/inputnumber';
+
+
 
 
 @NgModule({
@@ -43,7 +51,11 @@ import { TableModule } from 'primeng/table';
     HeaderComponent,
     FooterComponent,
     FilmeComponent,
-    FilmeinfoComponent
+    FilmeinfoComponent,
+    ReservaComponent,
+    CreateComponent,
+    ReservainfoComponent
+
   ],
   imports: [
     BrowserModule,
@@ -55,7 +67,9 @@ import { TableModule } from 'primeng/table';
     HttpClientModule,
     InputTextModule,
     DropdownModule,
-    TableModule
+    TableModule,
+    CalendarModule,
+    InputNumberModule
   ],
   providers: [
     AuthService,

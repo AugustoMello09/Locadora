@@ -1,0 +1,25 @@
+<app-header></app-header>
+<main class="text-center">
+  <div class="flex items-center flex-col justify-center h-[90vh]">
+    
+  <div>
+    <p class="text-custom-font-secundario text-xl font-font-secundaria font-bold p-3">Por favor, informe a quantidade e dia para ser reservado.</p>
+  </div>
+  <div>
+    <div>
+      <p-inputNumber [(ngModel)]="reservar.qtdReservada" class="p-4"></p-inputNumber>
+    </div>
+    <div>
+      <p-calendar [(ngModel)]="reservar.dataReserva" [showIcon]="true"></p-calendar>
+    </div>
+  </div>
+  <div>
+    <button (click)="create()" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 m-4 rounded-2xl">Reservar</button>
+    <p-messages [value]="message1" class="mx-4 w-full"></p-messages>
+  </div>
+  <div class="text-center">
+    <i routerLink="/lobbyFilme" class="pi pi-angle-left text-custom-span"></i>
+    </div>
+  </div>    
+</main>
+<app-footer></app-footer>

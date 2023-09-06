@@ -10,6 +10,9 @@ import { StepThreeComponent } from './telas/registro/step-three/step-three.compo
 import { HomeUsuComponent } from './telas/usuario/home-usu/home-usu.component';
 import { FilmeComponent } from './telas/usuario/filme/filme.component';
 import { FilmeinfoComponent } from './telas/usuario/filme/filmeinfo/filmeinfo.component';
+import { ReservaComponent } from './telas/usuario/reserva/reserva.component';
+import { ReservainfoComponent } from './telas/usuario/reserva/reservainfo/reservainfo.component';
+import { CreateComponent } from './telas/usuario/reserva/create/create.component';
 
 import { UserGuard } from './user.guard';
 
@@ -24,6 +27,9 @@ const routes: Routes = [
   { path: 'lobby', component: HomeUsuComponent, canActivate : [UserGuard] },
   { path: 'lobbyFilme', component: FilmeComponent, canActivate : [UserGuard] },
   { path: 'informacao/:id', component: FilmeinfoComponent, canActivate : [UserGuard] },
+  { path: 'reservas', component: ReservaComponent, canActivate : [UserGuard] },
+  { path: 'reserva/:id', component: ReservainfoComponent, canActivate : [UserGuard] },
+  { path: 'reservar/:idEstoque', component: CreateComponent, canActivate : [UserGuard] },
 ];
 
 @NgModule({

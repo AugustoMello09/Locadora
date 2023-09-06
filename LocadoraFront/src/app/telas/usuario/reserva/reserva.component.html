@@ -2,13 +2,13 @@
   <main class="text-center">
       
       <div>
-        <p class="text-custom-font-destaque p-4 font-font-secundaria font-semibold text-2xl">Filmes</p>
+        <p class="text-custom-font-destaque p-4 font-font-secundaria font-semibold text-2xl">Minhas reservas</p>
       </div>
       
     <div class="p-4">
     
       <p-table  
-          [value]="filmePaged"
+          [value]="reservaPaged"
           [paginator]="true"
           [showCurrentPageReport]="true"
           [tableStyle]="{ 'width': '100%' }"
@@ -17,20 +17,22 @@
         >
           <ng-template pTemplate="header">
             <tr class="title">
-              <th class="font-font-primaria font-bold text-lg text-black">Nome</th>
-              <th class="font-font-primaria font-bold text-lg text-black">Diretor</th>
+              <th class="font-font-primaria font-bold text-lg text-black">Data Reservada</th>
+              <th class="font-font-primaria font-bold text-lg text-black">Quantidade Reservada</th>
               <th class="font-font-primaria font-bold text-lg text-black">Informações</th>
             </tr>  
           </ng-template>
-          <ng-template pTemplate="body" let-filme>
+          <ng-template pTemplate="body" let-reservaOnline>
             <tr class="ti">
-              <td class="text-black font-bold">{{ filme.nome }}</td>
-              <td class="text-black font-bold">{{ filme.diretor }}</td> 
-              <td class="text-custom-span">{{ filme.informacoes }}
-                <a [routerLink]="['/informacao', filme.id]">
+              <td class="text-black font-bold">{{ reservaOnline.dataReserva }}</td>
+              <td class="text-black font-bold">{{ reservaOnline.qtdReservada }}</td>
+              <td class="text-custom-span">{{ reservaOnline.informacoes }}
+                <a [routerLink]="['/reserva', reservaOnline.id]">
                   <i class="pi pi-plus-circle"></i>
                 </a>
-              </td>       
+              </td>      
+              
+              
             </tr>
           </ng-template>
       </p-table>

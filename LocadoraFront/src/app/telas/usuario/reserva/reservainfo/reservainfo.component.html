@@ -1,0 +1,29 @@
+<app-header></app-header>
+<main class="text-center">
+    
+  <div class="flex items-center justify-center h-screen flex-col">
+      <header class="flex justify-around items-center gap-6 text-center">
+        <i routerLink="" class="pi pi-home text-custom-span" style="font-size: 2rem"></i>
+        <h2 class="text-custom-font-destaque font-font-primaria font-bold text-5xl p-4">Loque<span class="text-custom-span">Dog</span></h2>
+        <i routerLink="/userInfo" class="pi pi-user text-custom-span" style="font-size: 2rem"></i>
+      </header>
+      <div>
+        <p class="text-custom-font-secundario font-font-secundaria font-semibold text-3xl p-4">Informações sobre a reserva</p>
+      </div>
+      <div class="bg-custom-bloco shadow-lg shadow-cyan-500/100 rounded-2xl m-4 flex  justify-center flex-col w-auto">
+        <div>
+          <h2 class="text-custom-font-secundario font-font-secundaria font-semibold text-2xl p-4">Data reservada: {{ reserva.dataReserva }}</h2>
+          <p class="text-custom-font-secundario font-font-secundaria font-semibold text-xl p-4">Quantidade reservada: {{ reserva.qtdReservada }}</p>
+          <p class="text-custom-font-secundario font-font-secundaria font-semibold text-xl p-4">Status da reserva: <span class="text-green-300 font-font-secundaria font-semibold text-xl">{{ reserva.statusReserva }}</span></p>
+        </div>
+      </div>
+
+      <div>
+        <button (click)="cancelar()" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 m-4 rounded-2xl">Cancelar</button>
+      </div>
+      <div>
+        <i routerLink="lobby" class="pi pi-angle-left text-custom-span"></i>
+      </div> 
+    </div>
+</main>
+<app-footer></app-footer>

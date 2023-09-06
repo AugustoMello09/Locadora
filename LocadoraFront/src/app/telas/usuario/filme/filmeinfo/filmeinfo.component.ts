@@ -40,4 +40,10 @@ export class FilmeinfoComponent implements OnInit {
     })
   }
 
+  reservarFilme(): void {
+    if (this.filme.estoque.status === 'DISPONIVEL') {
+      const estoqueId = this.filme.estoque.id;
+      this.route.navigateByUrl(`/reservar/${estoqueId}`);
+    }
+  }
 }
