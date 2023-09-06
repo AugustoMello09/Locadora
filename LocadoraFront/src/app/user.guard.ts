@@ -17,7 +17,6 @@ export class UserGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean {
       const authenticated = this.authService.isAuthenticated();
-      console.log(authenticated);
       if (authenticated) {
         return true;
       } else {

@@ -15,17 +15,18 @@ import { LoginComponent } from './telas/login/login.component';
 import { StepOneComponent } from './telas/registro/step-one/step-one.component';
 import { StepTwoComponent } from './telas/registro/step-two/step-two.component';
 import { StepThreeComponent } from './telas/registro/step-three/step-three.component';
+import { ValidandoCepDirective } from './validando-cep.directive';
+import { HomeUsuComponent } from './telas/usuario/home-usu/home-usu.component';
+import { HeaderComponent } from './telas/usuario/templates/header/header.component';
+import { FooterComponent } from './telas/usuario/templates/footer/footer.component';
+import { FilmeComponent } from './telas/usuario/filme/filme.component';
+import { FilmeinfoComponent } from './telas/usuario/filme/filmeinfo/filmeinfo.component';
 
 import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
-import { ValidandoCepDirective } from './validando-cep.directive';
-import { HomeUsuComponent } from './telas/usuario/home-usu/home-usu.component';
-import { HeaderComponent } from './telas/usuario/templates/header/header.component';
-import { FooterComponent } from './telas/usuario/templates/footer/footer.component';
-
-
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
@@ -40,7 +41,9 @@ import { FooterComponent } from './telas/usuario/templates/footer/footer.compone
     ValidandoCepDirective,
     HomeUsuComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FilmeComponent,
+    FilmeinfoComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { FooterComponent } from './telas/usuario/templates/footer/footer.compone
     FormsModule,
     HttpClientModule,
     InputTextModule,
-    DropdownModule
+    DropdownModule,
+    TableModule
   ],
   providers: [
     AuthService,

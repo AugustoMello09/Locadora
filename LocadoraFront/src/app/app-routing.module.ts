@@ -8,6 +8,9 @@ import { StepOneComponent } from './telas/registro/step-one/step-one.component';
 import { StepTwoComponent } from './telas/registro/step-two/step-two.component';
 import { StepThreeComponent } from './telas/registro/step-three/step-three.component';
 import { HomeUsuComponent } from './telas/usuario/home-usu/home-usu.component';
+import { FilmeComponent } from './telas/usuario/filme/filme.component';
+import { FilmeinfoComponent } from './telas/usuario/filme/filmeinfo/filmeinfo.component';
+
 import { UserGuard } from './user.guard';
 
 const routes: Routes = [
@@ -19,6 +22,8 @@ const routes: Routes = [
   {path: 'stepThree', component:  StepThreeComponent },
   
   { path: 'lobby', component: HomeUsuComponent, canActivate : [UserGuard] },
+  { path: 'lobbyFilme', component: FilmeComponent, canActivate : [UserGuard] },
+  { path: 'informacao/:id', component: FilmeinfoComponent, canActivate : [UserGuard] },
 ];
 
 @NgModule({

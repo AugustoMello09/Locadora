@@ -1,0 +1,34 @@
+<app-header></app-header>
+<main class="absolute m-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
+    
+    <div class="flex flex-col items-center justify-center text-center h-screen">
+      
+      <div>
+        <p class="text-custom-font-secundario text-3xl font-font-secundaria font-semibold p-2">Filme</p>
+      </div>
+      
+      <div class="bg-custom-bloco rounded-2xl h-auto">
+          <h2 class="text-custom-botao text-2xl font-font-secundaria font-semibold p-4">{{ filme.nome }}</h2>
+          <p class="text-custom-font-secundario text-2xl font-font-secundaria font-semibold p-4">{{ filme.diretor }}</p>
+          <p class="text-custom-font-secundario text-2xl font-font-secundaria font-semibold p-4">{{ filme.descricao }}</p>
+      </div>
+      
+      <div class="flex items-center justify-around">
+        <p class="text-custom-font-secundario text-2xl font-font-secundaria font-semibold p-4"><i class="pi pi-dollar text-custom-span"></i>{{ filme.valorAluguel }}</p>
+        <p class="text-custom-font-secundario text-2xl font-font-secundaria font-semibold p-4"><i class="pi pi-wifi text-custom-span"></i>{{ filme.estoque.status }}</p>
+        <p class="text-custom-font-secundario text-2xl font-font-secundaria font-semibold p-4"><i class="pi pi-database text-custom-span"></i>{{ filme.estoque.quantidadeFilmesDisponiveis }}</p>
+      </div>
+      
+      <div>
+        <button class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 rounded-2xl">Reservar</button>
+      </div>
+      
+      <div class="text-center">
+        <i routerLink="/lobbyFilme" class="pi pi-angle-left text-custom-span p-2" style="font-size: 1rem;"></i>
+      </div> 
+    
+    </div>
+
+</main>
+
+<app-footer></app-footer>
