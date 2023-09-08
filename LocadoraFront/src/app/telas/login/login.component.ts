@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
         const userRoles = res.userRole.map((role: any) => role.authority);
         if (userRoles.includes('ROLE_ADMIN')) {
-          this.router.navigate(['']);
+          this.router.navigate(['homeAdm']);
         } else {
           this.router.navigate(['/lobby']);
         }

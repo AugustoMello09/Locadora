@@ -4,6 +4,8 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import jwtDecode from 'jwt-decode';
+
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +49,18 @@ export class AuthService {
       return token;
     }
     return null;
+  }
+
+  hasAdminRole(): string[] { 
+    const token = this.obterToken();
+    if (token) {
+      const decodedToken: any = jwtDecode(token);
+      if (decodedToken.authorities && Array.isArray(decodedToken.authorities)) {
+        const userRoles: string[] = decodedToken.authorities;
+        return userRoles;
+      }
+    }
+    return []; 
   }
 
   

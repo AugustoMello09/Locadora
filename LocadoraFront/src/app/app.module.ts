@@ -26,7 +26,8 @@ import { CreateComponent } from './telas/usuario/reserva/create/create.component
 import { ReservainfoComponent } from './telas/usuario/reserva/reservainfo/reservainfo.component';
 import { CategoriaReadComponent } from './telas/usuario/categoria/categoria-read/categoria-read.component';
 import { CategoriaFilmeComponent } from './telas/usuario/categoria/categoria-filme/categoria-filme.component';
-
+import { SidebarComponent } from './telas/adm/template/sidebar/sidebar.component';
+import { HomeAdmComponent } from './telas/adm/home-adm/home-adm.component';
 
 import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
@@ -35,6 +36,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { SidebarModule } from 'primeng/sidebar';
+
+
 
 
 
@@ -59,7 +63,9 @@ import { InputNumberModule } from 'primeng/inputnumber';
     CreateComponent,
     ReservainfoComponent,
     CategoriaReadComponent,
-    CategoriaFilmeComponent
+    CategoriaFilmeComponent,
+    SidebarComponent,
+    HomeAdmComponent
 
   ],
   imports: [
@@ -74,7 +80,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     DropdownModule,
     TableModule,
     CalendarModule,
-    InputNumberModule
+    InputNumberModule,
+    SidebarModule
   ],
   providers: [
     AuthService,
