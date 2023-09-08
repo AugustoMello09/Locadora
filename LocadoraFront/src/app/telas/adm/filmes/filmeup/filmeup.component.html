@@ -1,0 +1,36 @@
+<app-header></app-header>
+<main class="text-center">
+  <div class="flex items-center flex-col justify-center h-[80vh]">
+   
+    <div>
+      <p class="text-custom-font-secundario text-2xl font-font-secundaria font-bold p-6">Atualizar</p>
+    </div>
+  
+  <div>
+    <div class="flex items-center flex-col justify-center">
+      <label for="nome" class="text-custom-font-secundario text-2xl p-4 font-bold font-font-secundaria">{{ filme.nome }}</label>
+      <input name="nome" type="text" [(ngModel)]="filme.nome" pInputText placeholder="corra"> 
+    </div>
+  </div>
+
+  <div>
+    <div class="flex items-center flex-col justify-center">
+      <label for="diretor" class="text-custom-font-secundario text-2xl p-4 font-bold font-font-secundaria">{{ filme.diretor }}</label>
+      <input name="diretor" type="text" [(ngModel)]="filme.diretor" pInputText placeholder="Augusto"> 
+    </div>
+  </div>
+  
+  <div class="flex justify-center items-center flex-col">
+    <button (click)="update()" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 rounded-2xl mt-4">Atualizar</button>
+    <p-messages [value]="message1" class="mx-4"></p-messages>
+    <i routerLink="/filmes" class="pi pi-angle-left text-custom-span p-4" style="font-size: 2rem"></i>
+  </div>
+  
+ 
+    
+  </div>    
+
+</main>
+<app-sidebar></app-sidebar>
+<app-footer></app-footer>
+

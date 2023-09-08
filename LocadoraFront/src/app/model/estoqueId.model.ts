@@ -1,3 +1,3 @@
-export interface Estadoid {
+export interface EstoqueId {
   id: string;
 }

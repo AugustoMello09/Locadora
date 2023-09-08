@@ -1,0 +1,54 @@
+<app-header></app-header>
+  <main class="text-center">
+      
+      <div>
+        <p class="text-custom-font-destaque p-4 font-font-secundaria font-semibold text-2xl">Filmes</p>
+        <button routerLink="/estoquecre" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 rounded-2xl w-1/4">Criar</button>
+      </div>
+      
+    <div class="p-4">
+    
+      <p-table  
+          [value]="filmePaged"
+          [paginator]="true"
+          [showCurrentPageReport]="true"
+          [tableStyle]="{ 'width': '100%' }"
+          currentPageReportTemplate="{first} De {last}"
+          [rowsPerPageOptions]="[5, 10, 15, 20, 25]"
+        >
+          <ng-template pTemplate="header">
+            <tr class="title">
+              <th class="font-font-primaria font-bold text-lg text-black">Nome</th>
+              <th class="font-font-primaria font-bold text-lg text-black">Diretor</th>
+              <th class="font-font-primaria font-bold text-lg text-black">Informações</th>
+              <th class="font-font-primaria font-bold text-lg text-black">Atualizar</th>
+            </tr>  
+          </ng-template>
+          <ng-template pTemplate="body" let-filme>
+            <tr class="ti">
+              <td class="fil text-black font-bold">{{filme.nome}}</td>
+              <td class="text-black font-bold">{{filme.diretor}}</td>
+              
+              <td class="text-custom-span">{{filme.informacoes}}
+                <a [routerLink]="['/informacao', filme.id]">
+                  <i class="pi pi-plus-circle"></i>
+                </a>
+              </td>
+
+              <td class="text-custom-span">{{ filme.Atualizar}}
+                <a [routerLink]="['/filmesup', filme.id]">
+                  <i class="pi pi-pencil"></i>
+                </a>
+              </td>
+            
+            </tr>
+          </ng-template>
+      </p-table>
+  </div>
+  <div>
+    <i routerLink="/homeAdm" class="pi pi-angle-left text-custom-span" style="font-size: 2rem"></i>
+  </div> 
+</main>
+<app-sidebar></app-sidebar>
+<app-footer></app-footer>
+

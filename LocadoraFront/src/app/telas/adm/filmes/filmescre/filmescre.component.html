@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<form #f="ngForm" (submit)="onSubmit()">
+
+  <div class="flex justify-center items-center flex-col h-[90vh]"> 
+
+    <div class="flex flex-col items-center">
+      <label for="nome" class="text-custom-font-destaque font-font-secundaria font-semibold text-lg p-2">Nome</label>
+      <input name="filme" type="text" pInputText [(ngModel)]="filme.nome" minlength="2" maxlength="24" ngModel required/>
+    </div>
+
+    <div class="flex flex-col items-center">
+      <label for="descricao" class="text-custom-font-destaque font-font-secundaria font-semibold text-lg p-2">Descrição</label>
+      <input name="filme" type="text" pInputText [(ngModel)]="filme.descricao" maxlength="500" ngModel required/>
+    </div>
+
+    <div class="flex flex-col items-center">
+      <label for="diretor" class="text-custom-font-destaque font-font-secundaria font-semibold text-lg p-2">Diretor</label>
+      <input name="diretor" type="text" pInputText [(ngModel)]="filme.diretor" minlength="2" maxlength="24" ngModel required/>
+    </div>
+
+    <div class="flex flex-col items-center">
+      <label for="valorAluguel" class="text-custom-font-destaque font-font-secundaria font-semibold text-lg p-2">Valor</label>
+      <input name="diretor" type="text" pInputText [(ngModel)]="filme.valorAluguel" ngModel required/>
+    </div>
+
+    <div class="flex flex-col items-center"> 
+      <label for="categorias" class="text-custom-font-destaque font-font-secundaria font-semibold text-lg p-2">Categoria</label>
+      <p-dropdown [options]="categorias" optionValue="id" [(ngModel)]="filme.categoria.id" optionLabel="nomeCategoria" name="categorias" id="categorias" placeholder="Selecione a Categoria"></p-dropdown>
+    </div>
+
+    <button type="submit" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 m-2 rounded-2xl">Finalizar</button>
+    <p-messages [value]="message1" class="mx-2"></p-messages>
+
+  </div>
+
+</form>
+
+<app-sidebar></app-sidebar>
+<app-footer></app-footer>
+

@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Filme } from '../model/filme.model';
+import { Filmeup } from '../model/filmeup.model';
+import { FilmeInsert } from '../model/filmeInsert.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +32,15 @@ export class FilmeService {
     const url = `${this.baseUrl}/filmes?categoria=${idCategoria}`
     return this.http.get<Filme[]>(url)
   }
+
+  update(filme: Filmeup): Observable<Filmeup> {
+    const url = `${this.baseUrl}/filmes/${filme.id}`;
+    return this.http.put<Filmeup>(url, filme);
+  }
+
+  create(filme: FilmeInsert): Observable<FilmeInsert>{
+    const url = `${this.baseUrl}/filmes`
+    return this.http.post<FilmeInsert>(url, filme);
+  }
+
 }

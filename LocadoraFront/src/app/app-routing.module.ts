@@ -18,6 +18,11 @@ import { CategoriaFilmeComponent } from './telas/usuario/categoria/categoria-fil
 import { HomeAdmComponent } from './telas/adm/home-adm/home-adm.component';
 import { AdministracaoComponent } from './telas/adm/administracao/administracao.component';
 import { UserupComponent } from './telas/adm/administracao/userup/userup.component';
+import { FilmesComponent } from './telas/adm/filmes/filmes.component';
+import { FilmeupComponent } from './telas/adm/filmes/filmeup/filmeup.component';
+import { EstoqueComponent } from './telas/adm/estoque/estoque.component';
+import { EstoquecreComponent } from './telas/adm/estoque/estoquecre/estoquecre.component';
+import { FilmescreComponent } from './telas/adm/filmes/filmescre/filmescre.component';
 
 
 import { UserGuard } from './user.guard';
@@ -44,6 +49,11 @@ const routes: Routes = [
   { path: 'homeAdm', component: HomeAdmComponent, canActivate : [AdmGuard] },
   { path: 'usuarios', component: AdministracaoComponent , canActivate : [AdmGuard] },
   { path: 'cargo/:id', component:  UserupComponent , canActivate : [AdmGuard] },
+  { path: 'filmes', component:  FilmesComponent , canActivate : [AdmGuard] },
+  { path: 'filmesup/:id', component:  FilmeupComponent , canActivate : [AdmGuard] },
+  { path: 'estoque', component:  EstoqueComponent , canActivate : [AdmGuard] },
+  { path: 'estoquecre', component:  EstoquecreComponent , canActivate : [AdmGuard] },
+  { path: 'filmescre/:id', component:  FilmescreComponent , canActivate : [AdmGuard] },
 ];
 
 @NgModule({

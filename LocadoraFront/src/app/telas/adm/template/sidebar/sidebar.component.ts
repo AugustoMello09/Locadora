@@ -28,11 +28,11 @@ export class SidebarComponent implements OnInit {
   }
 
   filmes() {
-    this.router.navigate(['']);
+    this.router.navigate(['/filmes']);
   }
   
   estoque() {
-    this.router.navigate(['']);
+    this.router.navigate(['/estoque']);
   }
 
   multa() {

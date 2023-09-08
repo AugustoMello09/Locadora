@@ -30,6 +30,11 @@ import { SidebarComponent } from './telas/adm/template/sidebar/sidebar.component
 import { HomeAdmComponent } from './telas/adm/home-adm/home-adm.component';
 import { AdministracaoComponent } from './telas/adm/administracao/administracao.component';
 import { UserupComponent } from './telas/adm/administracao/userup/userup.component';
+import { FilmesComponent } from './telas/adm/filmes/filmes.component';
+import { FilmeupComponent } from './telas/adm/filmes/filmeup/filmeup.component';
+import { EstoqueComponent } from './telas/adm/estoque/estoque.component';
+import { EstoquecreComponent } from './telas/adm/estoque/estoquecre/estoquecre.component';
+import { FilmescreComponent } from './telas/adm/filmes/filmescre/filmescre.component';
 
 import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
@@ -39,6 +44,11 @@ import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { SidebarModule } from 'primeng/sidebar';
+
+
+
+
+
 
 
 
@@ -71,7 +81,12 @@ import { SidebarModule } from 'primeng/sidebar';
     SidebarComponent,
     HomeAdmComponent,
     AdministracaoComponent,
-    UserupComponent
+    UserupComponent,
+    FilmesComponent,
+    FilmeupComponent,
+    EstoqueComponent,
+    EstoquecreComponent,
+    FilmescreComponent
 
   ],
   imports: [

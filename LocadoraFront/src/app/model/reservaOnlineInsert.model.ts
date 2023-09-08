@@ -1,4 +1,5 @@
-import { Estadoid } from "./estoqueId.model";
+
+import { EstoqueId } from "./estoqueId.model";
 import { UserId } from "./userId.model";
 
 export interface ReservaOnlineInsert {
@@ -6,5 +7,5 @@ export interface ReservaOnlineInsert {
   qtdReservada: string;
   dataReserva: string;
   user: UserId;
-  estoque: Estadoid;
+  estoque: EstoqueId;
 }

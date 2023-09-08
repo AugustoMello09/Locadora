@@ -1,0 +1,44 @@
+<app-header></app-header>
+<main class="text-center">
+  
+    <div>
+      <p class="text-custom-font-destaque p-4 font-font-secundaria font-semibold text-2xl">Estoques</p>
+    </div>
+    
+    <div class="p-4">
+    
+      <p-table
+      class="p-6"
+        [value]="estoquePaged"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'width': '100%'}"
+      >
+        <ng-template pTemplate="header">
+          <tr class="title">
+            <th class="font-font-primaria font-bold text-lg text-black">Quantidade</th>
+            <th class="font-font-primaria font-bold text-lg text-black">Disponível</th>
+            <th class="font-font-primaria font-bold text-lg text-black">Status</th>
+            <th class="font-font-primaria font-bold text-lg text-black">Reservados no Site</th>
+            <th class="font-font-primaria font-bold text-lg text-black">Reservados Normal</th>
+          </tr>
+
+        </ng-template>
+
+        <ng-template pTemplate="body" let-estoque>
+          <tr class="ti">
+           
+            <td class="text-black font-bold">{{ estoque.quantidade }}</td>
+            <td class="text-black font-bold">{{ estoque.quantidadeFilmesDisponiveis }}</td>
+            <td class="text-black font-bold">{{ estoque.status }}</td>
+            <td class="text-black font-bold">{{ estoque.quantidadeFilmesReservadosOnline }}</td>
+            <td class="text-black font-bold">{{ estoque.quantidadeFilmesReservados }}</td>
+            
+          </tr>
+        
+        </ng-template>
+    
+      </p-table>
+  </div>
+</main>
+<app-sidebar></app-sidebar>
+<app-footer></app-footer>

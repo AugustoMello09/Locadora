@@ -1,0 +1,20 @@
+<app-header></app-header>
+<main class="text-center">
+  
+  <div class="flex flex-col items-center justify-center h-[80vh]">
+    
+    <p class="text-custom-font-destaque p-4 font-font-secundaria font-semibold text-2xl">Prepare seu estoque antes da sessão começar!</p>
+
+    <div class="flex flex-col">
+      <label for="quantidade" class="text-custom-font-destaque p-4 font-font-secundaria font-semibold text-2xl">Informe a quantidade</label>
+      <p-inputNumber class="p-4 inline"  name="quantidade" placeholder="Ex 2" [(ngModel)]="estoque.quantidade"></p-inputNumber>
+    </div>
+    
+    <button (click)="create()" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 m-4 rounded-2xl">Próximo</button>
+  </div>
+
+  
+</main>
+<app-sidebar></app-sidebar>
+<app-footer></app-footer>
+
