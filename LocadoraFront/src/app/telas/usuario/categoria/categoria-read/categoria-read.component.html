@@ -1,0 +1,39 @@
+<app-header></app-header>
+  <main class="text-center">
+      
+      <div>
+        <p class="text-custom-font-destaque p-4 font-font-secundaria font-semibold text-2xl">Categorias</p>
+      </div>
+      
+    <div class="p-4">
+    
+      <p-table  
+          [value]="categoriasPaged"
+          [showCurrentPageReport]="true"
+          [tableStyle]="{ 'width': '100%' }"
+          currentPageReportTemplate="{first} De {last}"
+          [rowsPerPageOptions]="[5, 10, 15, 20, 25]"
+        >
+          <ng-template pTemplate="header">
+            <tr class="title">
+              <th class="font-font-primaria font-bold text-lg text-black">Nome categoria</th>
+              <th class="font-font-primaria font-bold text-lg text-black">Filmes</th>
+            </tr>  
+          </ng-template>
+          <ng-template pTemplate="body" let-categoria>
+            <tr class="ti">
+              <td class="text-black font-bold">{{ categoria.nomeCategoria }}</td>
+              <td class="text-custom-span">{{ categoria.filmes }}
+                <a [routerLink]="['/categoriaByFilmes', categoria.id]">
+                  <i class="pi pi-plus-circle"></i>
+                </a>
+              </td>       
+            </tr>
+          </ng-template>
+      </p-table>
+  </div>
+  <div>
+    <i routerLink="/lobby" class="pi pi-angle-left text-custom-span" style="font-size: 2rem"></i>
+  </div> 
+</main>
+<app-footer></app-footer>

@@ -44,7 +44,7 @@ export class CreateComponent implements OnInit {
     this.reservar.dataReserva = this.reservaService.formatarData(this.reservar.dataReserva);
     this.reservaService.create(this.reservar).subscribe(res => {
       this.reservar = res;
-      //this.router.navigate(['/reservas'])
+      this.router.navigate(['/reservas'])
     }, (err: HttpErrorResponse) => {
       this.addMessage(err);
       for (const error of err.error.errors) {
