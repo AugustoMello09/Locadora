@@ -16,6 +16,8 @@ import { CreateComponent } from './telas/usuario/reserva/create/create.component
 import { CategoriaReadComponent } from './telas/usuario/categoria/categoria-read/categoria-read.component';
 import { CategoriaFilmeComponent } from './telas/usuario/categoria/categoria-filme/categoria-filme.component';
 import { HomeAdmComponent } from './telas/adm/home-adm/home-adm.component';
+import { AdministracaoComponent } from './telas/adm/administracao/administracao.component';
+import { UserupComponent } from './telas/adm/administracao/userup/userup.component';
 
 
 import { UserGuard } from './user.guard';
@@ -40,6 +42,8 @@ const routes: Routes = [
   { path: 'categoriaByFilmes/:id', component: CategoriaFilmeComponent, canActivate : [UserGuard] },
   
   { path: 'homeAdm', component: HomeAdmComponent, canActivate : [AdmGuard] },
+  { path: 'usuarios', component: AdministracaoComponent , canActivate : [AdmGuard] },
+  { path: 'cargo/:id', component:  UserupComponent , canActivate : [AdmGuard] },
 ];
 
 @NgModule({

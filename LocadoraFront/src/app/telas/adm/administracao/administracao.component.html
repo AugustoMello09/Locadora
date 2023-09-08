@@ -1,0 +1,53 @@
+<app-header></app-header>
+<main class="text-center">
+  
+    <div>
+      <p class="text-custom-font-destaque p-4 font-font-secundaria font-semibold text-2xl">Usuários</p>
+    </div>
+    
+    <div class="p-4">
+    
+      <p-table
+        [value]="userPaged"
+        [showCurrentPageReport]="true"
+        [tableStyle]="{ 'width': '100%'}"
+        currentPageReportTemplate="{first} De {last}"
+        [rowsPerPageOptions]="[5, 10, 15, 20, 25]"
+      >
+        <ng-template pTemplate="header">
+          <tr class="title">
+            <th class="font-font-primaria font-bold text-lg text-black">Nome</th>
+            <th class="font-font-primaria font-bold text-lg text-black">Email</th>
+            <th class="font-font-primaria font-bold text-lg text-black">Cargo</th>
+            <th class="font-font-primaria font-bold text-lg text-black">Alterar Cargo</th>
+          </tr>
+
+        </ng-template>
+
+        <ng-template pTemplate="body" let-user>
+          <tr class="ti">
+           
+            <td class="text-black font-bold">{{user.name}}</td>
+            <td class="text-black font-bold">{{user.email}}</td>
+            <td class="text-black font-bold">
+              <ng-container *ngFor="let role of user.roles; let last = last">
+                {{ role.authority }}
+                <span *ngIf="!last">, </span>
+              </ng-container>
+            </td>
+            <td class="text-custom-span">{{ user.Atualizar}}
+              <a [routerLink]="['/cargo', user.id]">
+                <i class="pi pi-pencil"></i>
+              </a>
+            </td>
+           
+           
+          </tr>
+        
+        </ng-template>
+    
+      </p-table>
+  </div>
+</main>
+<app-sidebar></app-sidebar>
+<app-footer></app-footer>

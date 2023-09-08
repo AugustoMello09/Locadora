@@ -28,6 +28,8 @@ import { CategoriaReadComponent } from './telas/usuario/categoria/categoria-read
 import { CategoriaFilmeComponent } from './telas/usuario/categoria/categoria-filme/categoria-filme.component';
 import { SidebarComponent } from './telas/adm/template/sidebar/sidebar.component';
 import { HomeAdmComponent } from './telas/adm/home-adm/home-adm.component';
+import { AdministracaoComponent } from './telas/adm/administracao/administracao.component';
+import { UserupComponent } from './telas/adm/administracao/userup/userup.component';
 
 import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
@@ -37,6 +39,8 @@ import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { SidebarModule } from 'primeng/sidebar';
+
+
 
 
 
@@ -65,7 +69,9 @@ import { SidebarModule } from 'primeng/sidebar';
     CategoriaReadComponent,
     CategoriaFilmeComponent,
     SidebarComponent,
-    HomeAdmComponent
+    HomeAdmComponent,
+    AdministracaoComponent,
+    UserupComponent
 
   ],
   imports: [

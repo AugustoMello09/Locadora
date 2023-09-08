@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
   }
 
   home() {
-    this.router.navigate(['']);
+    this.router.navigate(['/homeAdm']);
   }
 
   reservas() {
@@ -40,7 +40,7 @@ export class SidebarComponent implements OnInit {
   }
 
   users() {
-    this.router.navigate(['']);
+    this.router.navigate(['/usuarios']);
   }
 
   locacao() {

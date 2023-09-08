@@ -1,3 +1,3 @@
 export interface RolId {
-  id?: number;
+  id?: number | string;
 }
