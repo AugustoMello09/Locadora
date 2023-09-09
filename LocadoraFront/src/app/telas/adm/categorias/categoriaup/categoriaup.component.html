@@ -1,0 +1,33 @@
+<app-header></app-header>
+<main class="text-center">
+  <div class="flex items-center flex-col justify-center h-screen">
+   
+    <div>
+      <p class="text-custom-font-secundario text-6xl font-font-secundaria font-bold p-6">Categoria</p>
+    </div>
+
+    <div>
+      <p class="text-custom-font-secundario text-2xl font-font-secundaria font-bold p-6">{{ categoria.nomeCategoria }}</p>
+    </div>
+  
+  <div>
+    <div class="flex items-center flex-col justify-center">
+      <label for="categoria" class="text-custom-font-secundario text-2xl p-4 font-bold font-font-secundaria">Atualizar</label>
+      <input name="name" type="text" pInputText [(ngModel)]="categoria.nomeCategoria" placeholder="Aventura"> 
+    </div>
+  </div>
+  
+  <div class=" text-center">
+    <button (click)="atualizar()" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 m-4 rounded-2xl">Atualizar</button>
+    <p-messages  class="mx-4 w-full"></p-messages>
+  </div>
+  
+  <div>
+    <i routerLink="/categorias" class="pi pi-angle-left text-custom-span" style="font-size: 2rem"></i>
+  </div> 
+    
+  </div>    
+
+</main>
+<app-sidebar></app-sidebar>
+<app-footer></app-footer>

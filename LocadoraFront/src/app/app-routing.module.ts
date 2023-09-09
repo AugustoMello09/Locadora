@@ -23,6 +23,9 @@ import { FilmeupComponent } from './telas/adm/filmes/filmeup/filmeup.component';
 import { EstoqueComponent } from './telas/adm/estoque/estoque.component';
 import { EstoquecreComponent } from './telas/adm/estoque/estoquecre/estoquecre.component';
 import { FilmescreComponent } from './telas/adm/filmes/filmescre/filmescre.component';
+import { CategoriasComponent } from './telas/adm/categorias/categorias.component';
+import { CategoriaupComponent } from './telas/adm/categorias/categoriaup/categoriaup.component';
+import { CategoriadelComponent } from './telas/adm/categorias/categoriadel/categoriadel.component';
 
 
 import { UserGuard } from './user.guard';
@@ -54,6 +57,9 @@ const routes: Routes = [
   { path: 'estoque', component:  EstoqueComponent , canActivate : [AdmGuard] },
   { path: 'estoquecre', component:  EstoquecreComponent , canActivate : [AdmGuard] },
   { path: 'filmescre/:id', component:  FilmescreComponent , canActivate : [AdmGuard] },
+  { path: 'categorias', component:  CategoriasComponent , canActivate : [AdmGuard] },
+  { path: 'categoriasup/:id', component:  CategoriaupComponent  , canActivate : [AdmGuard] },
+  { path: 'categoriasdel/:id', component:  CategoriadelComponent , canActivate : [AdmGuard] },
 ];
 
 @NgModule({

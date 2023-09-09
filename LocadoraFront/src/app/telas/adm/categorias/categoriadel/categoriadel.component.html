@@ -1,0 +1,26 @@
+<app-header></app-header>
+<main class="text-center">
+  <div class="flex items-center flex-col justify-center h-screen">
+   
+    <div>
+      <p class="text-custom-font-secundario text-6xl font-font-secundaria font-bold p-6">Categoria</p>
+    </div>
+
+    <div>
+      <p class="text-custom-font-secundario text-2xl font-font-secundaria font-bold p-6">{{ categoria.nomeCategoria }}</p>
+    </div>
+  
+  <div class=" text-center">
+    <button (click)="cancelar()" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 m-4 rounded-2xl">Deletar</button>
+    <p-messages [value]="message1" class="mx-4"></p-messages>
+  </div>
+  
+  <div>
+    <i routerLink="/categorias" class="pi pi-angle-left text-custom-span" style="font-size: 2rem"></i>
+  </div> 
+    
+  </div>    
+
+</main>
+<app-sidebar></app-sidebar>
+<app-footer></app-footer>

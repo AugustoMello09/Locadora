@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
   }
 
   categoria() {
-    this.router.navigate(['']);
+    this.router.navigate(['/categorias']);
   }
 
   home() {

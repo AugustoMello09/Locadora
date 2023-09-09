@@ -35,6 +35,9 @@ import { FilmeupComponent } from './telas/adm/filmes/filmeup/filmeup.component';
 import { EstoqueComponent } from './telas/adm/estoque/estoque.component';
 import { EstoquecreComponent } from './telas/adm/estoque/estoquecre/estoquecre.component';
 import { FilmescreComponent } from './telas/adm/filmes/filmescre/filmescre.component';
+import { CategoriasComponent } from './telas/adm/categorias/categorias.component';
+import { CategoriaupComponent } from './telas/adm/categorias/categoriaup/categoriaup.component';
+import { CategoriadelComponent } from './telas/adm/categorias/categoriadel/categoriadel.component';
 
 import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
@@ -44,6 +47,8 @@ import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { SidebarModule } from 'primeng/sidebar';
+
+
 
 
 
@@ -86,7 +91,10 @@ import { SidebarModule } from 'primeng/sidebar';
     FilmeupComponent,
     EstoqueComponent,
     EstoquecreComponent,
-    FilmescreComponent
+    FilmescreComponent,
+    CategoriasComponent,
+    CategoriaupComponent,
+    CategoriadelComponent
 
   ],
   imports: [
