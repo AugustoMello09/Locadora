@@ -22,6 +22,11 @@ export class ReservaService {
     return this.http.get<any>(this.baseUrl + '/reservasOnline', { params });
   }
 
+  findAll(): Observable<any>{
+    const url = `${this.baseUrl}/reservasOnline/lista`;
+    return this.http.get<any>(url);
+  }
+
   findById(id: any): Observable<ReservaOnline>{
     const url = `${this.baseUrl}/reservasOnline/${id}`;
     return this.http.get<ReservaOnline>(url);

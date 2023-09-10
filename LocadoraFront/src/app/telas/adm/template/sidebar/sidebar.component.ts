@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
   }
 
   reservas() {
-    this.router.navigate(['']);
+    this.router.navigate(['/reservasAdm']);
   }
 
   filmes() {

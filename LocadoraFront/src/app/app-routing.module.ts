@@ -28,6 +28,7 @@ import { CategoriaupComponent } from './telas/adm/categorias/categoriaup/categor
 import { CategoriadelComponent } from './telas/adm/categorias/categoriadel/categoriadel.component';
 import { LocacaoComponent } from './telas/adm/locacao/locacao.component';
 import { LocacaocriComponent } from './telas/adm/locacao/locacaocri/locacaocri.component';
+import { ReservasComponent } from './telas/adm/reservas/reservas.component';
 
 
 import { UserGuard } from './user.guard';
@@ -64,6 +65,7 @@ const routes: Routes = [
   { path: 'categoriasdel/:id', component:  CategoriadelComponent , canActivate : [AdmGuard] },
   { path: 'locacao', component:  LocacaoComponent , canActivate : [AdmGuard] },
   { path: 'locacaocri', component:  LocacaocriComponent , canActivate : [AdmGuard] },
+  { path: 'reservasAdm', component:  ReservasComponent , canActivate : [AdmGuard] },
 ];
 
 @NgModule({
