@@ -38,6 +38,8 @@ import { FilmescreComponent } from './telas/adm/filmes/filmescre/filmescre.compo
 import { CategoriasComponent } from './telas/adm/categorias/categorias.component';
 import { CategoriaupComponent } from './telas/adm/categorias/categoriaup/categoriaup.component';
 import { CategoriadelComponent } from './telas/adm/categorias/categoriadel/categoriadel.component';
+import { LocacaoComponent } from './telas/adm/locacao/locacao.component';
+import { LocacaocriComponent } from './telas/adm/locacao/locacaocri/locacaocri.component';
 
 import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
@@ -47,20 +49,7 @@ import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { SidebarModule } from 'primeng/sidebar';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import { TooltipModule } from 'primeng/tooltip';
 
 
 @NgModule({
@@ -94,7 +83,9 @@ import { SidebarModule } from 'primeng/sidebar';
     FilmescreComponent,
     CategoriasComponent,
     CategoriaupComponent,
-    CategoriadelComponent
+    CategoriadelComponent,
+    LocacaoComponent,
+    LocacaocriComponent
 
   ],
   imports: [
@@ -110,7 +101,8 @@ import { SidebarModule } from 'primeng/sidebar';
     TableModule,
     CalendarModule,
     InputNumberModule,
-    SidebarModule
+    SidebarModule,
+    TooltipModule
   ],
   providers: [
     AuthService,

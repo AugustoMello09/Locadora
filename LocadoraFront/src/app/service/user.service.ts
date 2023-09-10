@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { User } from '../model/user.model';
 import { Observable } from 'rxjs';
 import { UserU } from '../model/userUtil.model';
+import { UserInfo } from '../model/userInfo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +36,10 @@ export class UserService {
   findById(id: any): Observable<UserU> {
     const url = `${this.baseUrl}/users/${id}`
     return this.http.get<UserU>(url);
+  }
+
+  findAll(): Observable<UserInfo[]>{
+    const url = `${this.baseUrl}/users/lista`
+    return this.http.get<UserInfo[]>(url);
   }
 }

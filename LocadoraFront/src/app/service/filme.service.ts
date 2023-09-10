@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Filme } from '../model/filme.model';
 import { Filmeup } from '../model/filmeup.model';
 import { FilmeInsert } from '../model/filmeInsert.model';
+import { Filmeinfo } from '../model/filmeInfo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,11 @@ export class FilmeService {
   create(filme: FilmeInsert): Observable<FilmeInsert>{
     const url = `${this.baseUrl}/filmes`
     return this.http.post<FilmeInsert>(url, filme);
+  }
+
+  findAllDrop(): Observable<Filmeinfo[]> {
+    const url = `${this.baseUrl}/filmes/lista`
+    return this.http.get<Filmeinfo[]>(url);
   }
 
 }

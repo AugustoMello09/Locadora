@@ -1,0 +1,35 @@
+<app-header></app-header>
+
+<form #f="ngForm">
+
+  <div class="flex justify-center items-center flex-col h-[80vh]"> 
+
+    <div class="flex flex-col items-center">
+      <label for="quantidade" class="text-custom-font-destaque p-2 font-font-secundaria font-semibold text-2xl">Informe a quantidade</label>
+      <p-inputNumber name="quantidade" [(ngModel)]="locacao.qtd" placeholder="Ex 2"></p-inputNumber>
+    </div>
+
+    <div class="flex flex-col items-center"> 
+      <label for="tipoPagamento" class="text-custom-font-destaque font-font-secundaria font-semibold text-lg p-2">Forma de pagamento</label>
+      <p-dropdown [options]="formasPagamento" optionValue="value"  [(ngModel)]="locacao.formaPagamento" optionLabel="label" name="tipoPagamento" id="tipoPagamento" placeholder="Selecione a forma de pagamento"></p-dropdown>
+    </div>
+    
+    <div class="flex flex-col items-center"> 
+      <label for="users" class="text-custom-font-destaque font-font-secundaria font-semibold text-lg p-2">Usuários</label>
+      <p-dropdown [options]="users" optionValue="id"  optionLabel="name" [(ngModel)]="locacao.user.id" name="name" id="users" placeholder="Selecione o usuário"></p-dropdown>
+    </div>
+
+    <div class="flex flex-col items-center"> 
+      <label for="filme" class="text-custom-font-destaque font-font-secundaria font-semibold text-lg p-2">Filmes</label>
+      <p-dropdown [options]="filmes" optionValue="id"  optionLabel="nome" [(ngModel)]="locacao.filme.id" name="filme" id="filme" placeholder="Selecione o Filme"></p-dropdown>
+    </div>
+
+    <button (click)="create()" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 m-2 rounded-2xl">Finalizar</button>
+  
+  </div>
+
+</form>
+
+<app-sidebar></app-sidebar>
+<app-footer></app-footer>
+

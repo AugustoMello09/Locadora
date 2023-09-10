@@ -44,7 +44,7 @@ export class SidebarComponent implements OnInit {
   }
 
   locacao() {
-    this.router.navigate([''])
+    this.router.navigate(['/locacao'])
   }
 
 }

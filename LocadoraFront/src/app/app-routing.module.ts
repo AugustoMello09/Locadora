@@ -26,6 +26,8 @@ import { FilmescreComponent } from './telas/adm/filmes/filmescre/filmescre.compo
 import { CategoriasComponent } from './telas/adm/categorias/categorias.component';
 import { CategoriaupComponent } from './telas/adm/categorias/categoriaup/categoriaup.component';
 import { CategoriadelComponent } from './telas/adm/categorias/categoriadel/categoriadel.component';
+import { LocacaoComponent } from './telas/adm/locacao/locacao.component';
+import { LocacaocriComponent } from './telas/adm/locacao/locacaocri/locacaocri.component';
 
 
 import { UserGuard } from './user.guard';
@@ -60,6 +62,8 @@ const routes: Routes = [
   { path: 'categorias', component:  CategoriasComponent , canActivate : [AdmGuard] },
   { path: 'categoriasup/:id', component:  CategoriaupComponent  , canActivate : [AdmGuard] },
   { path: 'categoriasdel/:id', component:  CategoriadelComponent , canActivate : [AdmGuard] },
+  { path: 'locacao', component:  LocacaoComponent , canActivate : [AdmGuard] },
+  { path: 'locacaocri', component:  LocacaocriComponent , canActivate : [AdmGuard] },
 ];
 
 @NgModule({
