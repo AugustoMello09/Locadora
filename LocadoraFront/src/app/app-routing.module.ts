@@ -30,6 +30,7 @@ import { LocacaoComponent } from './telas/adm/locacao/locacao.component';
 import { LocacaocriComponent } from './telas/adm/locacao/locacaocri/locacaocri.component';
 import { ReservasComponent } from './telas/adm/reservas/reservas.component';
 import { MultaComponent } from './telas/adm/multa/multa.component';
+import { PerfilComponent } from './telas/perfil/perfil.component';
 
 
 import { UserGuard } from './user.guard';
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'reservar/:idEstoque', component: CreateComponent, canActivate : [UserGuard] },
   { path: 'lobbyCategorias', component: CategoriaReadComponent, canActivate : [UserGuard] },
   { path: 'categoriaByFilmes/:id', component: CategoriaFilmeComponent, canActivate : [UserGuard] },
+  { path: 'perfil', component: PerfilComponent, canActivate : [UserGuard] },
   
   { path: 'homeAdm', component: HomeAdmComponent, canActivate : [AdmGuard] },
   { path: 'usuarios', component: AdministracaoComponent , canActivate : [AdmGuard] },

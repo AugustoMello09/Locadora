@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import jwtDecode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -19,7 +20,7 @@ export class AuthService {
 
   jwtHelper: JwtHelperService = new JwtHelperService();
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,  private router: Router) { }
 
   tentarLogar(email: string, password: string): Observable<any> {
     const params = new HttpParams()
@@ -63,5 +64,18 @@ export class AuthService {
     return []; 
   }
 
+  sairDaConta() {
+    localStorage.removeItem('token_access');
+    this.router.navigate(['/login']);
+  }
+
+  getTokenData() {
+    const token =  this.obterToken();
+    if (token) {
+      const decodedToken = jwtDecode(token);
+      return decodedToken;
+    }
+    return null;
+  }
   
 }
