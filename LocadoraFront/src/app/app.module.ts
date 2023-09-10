@@ -41,6 +41,7 @@ import { CategoriadelComponent } from './telas/adm/categorias/categoriadel/categ
 import { LocacaoComponent } from './telas/adm/locacao/locacao.component';
 import { LocacaocriComponent } from './telas/adm/locacao/locacaocri/locacaocri.component';
 import { ReservasComponent } from './telas/adm/reservas/reservas.component';
+import { MultaComponent } from './telas/adm/multa/multa.component';
 
 import { MessagesModule } from 'primeng/messages';
 import { PasswordModule } from 'primeng/password';
@@ -51,6 +52,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { SidebarModule } from 'primeng/sidebar';
 import { TooltipModule } from 'primeng/tooltip';
+
 
 
 @NgModule({
@@ -87,7 +89,8 @@ import { TooltipModule } from 'primeng/tooltip';
     CategoriadelComponent,
     LocacaoComponent,
     LocacaocriComponent,
-    ReservasComponent
+    ReservasComponent,
+    MultaComponent
 
   ],
   imports: [

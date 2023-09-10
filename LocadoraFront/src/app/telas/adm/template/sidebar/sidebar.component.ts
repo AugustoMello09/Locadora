@@ -36,7 +36,7 @@ export class SidebarComponent implements OnInit {
   }
 
   multa() {
-    this.router.navigate(['']);
+    this.router.navigate(['/multas']);
   }
 
   users() {
