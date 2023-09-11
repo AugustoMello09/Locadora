@@ -53,6 +53,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { SidebarModule } from 'primeng/sidebar';
 import { TooltipModule } from 'primeng/tooltip';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { TooltipModule } from 'primeng/tooltip';
     CalendarModule,
     InputNumberModule,
     SidebarModule,
-    TooltipModule
+    TooltipModule,
+    ProgressSpinnerModule
   ],
   providers: [
     AuthService,

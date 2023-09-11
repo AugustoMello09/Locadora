@@ -25,7 +25,7 @@
           
           <label for="municipios" class="text-custom-font-destaque font-font-secundaria font-semibold text-lg p-4">Cidade</label>
           
-          <p-dropdown [options]="cidadeLista" optionValue="nome" [(ngModel)]="estadoCidadeSelecionada.name" name="cidade" optionLabel="nome" placeholder="Selecione a cidade"></p-dropdown>
+          <p-dropdown [options]="cidadeLista" [disabled]="isLoading" optionValue="nome" [(ngModel)]="estadoCidadeSelecionada.name" name="cidade" optionLabel="nome" placeholder="Selecione a cidade"></p-dropdown>
           
 
         </div>

@@ -14,7 +14,8 @@ import { ConsultaCepService } from 'src/app/service/consulta-cep.service';
 })
 export class StepTwoComponent implements OnInit {
 
-  
+  isLoading: boolean = true;
+
   selectedUf!: string;
 
   estadoLista: Estado[] = [];
@@ -100,6 +101,7 @@ export class StepTwoComponent implements OnInit {
     this.consultaService.getConsultaCidades(selectedUf).subscribe(response => {
       const cidadesFiltradas: Cidade[] = response.map(cidade => ({ nome: cidade.nome }));
       this.cidadeLista = cidadesFiltradas;
+      this.isLoading = false;
     });
   }
 
