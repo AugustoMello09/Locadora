@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 import { CategoriaService } from 'src/app/service/categoria.service';
 
 @Component({
@@ -8,11 +10,15 @@ import { CategoriaService } from 'src/app/service/categoria.service';
 })
 export class CategoriaReadComponent implements OnInit {
 
+  isAdmin: boolean = false;
+
   categoriasPaged: any;
 
-  constructor(private categoriaService: CategoriaService) { }
+  constructor(private categoriaService: CategoriaService, private auth: AuthService,  private route: Router) { }
 
   ngOnInit(): void {
+    const userRoles = this.auth.hasAdminRole();
+    this.isAdmin = userRoles.includes('ROLE_ADMIN');
     this.readCategorias();
   }
 
@@ -24,6 +30,14 @@ export class CategoriaReadComponent implements OnInit {
         console.log(err)
       }
     )
+  }
+  
+  voltar(): void {
+    if (this.isAdmin) {
+      this.route.navigate(['/homeAdm'])
+    } else {
+      this.route.navigate(['/lobby'])
+    }
   }
 
 }

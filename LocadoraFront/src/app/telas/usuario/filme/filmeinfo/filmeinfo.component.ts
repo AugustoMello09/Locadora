@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Filme } from 'src/app/model/filme.model';
+import { AuthService } from 'src/app/service/auth.service';
 import { FilmeService } from 'src/app/service/filme.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { FilmeService } from 'src/app/service/filme.service';
 export class FilmeinfoComponent implements OnInit {
 
   id_filme = '';
+
+  isAdmin: boolean = false;
 
   filme: Filme = {
     nome: '',
@@ -27,9 +30,11 @@ export class FilmeinfoComponent implements OnInit {
   }
   
   constructor(private filmeService: FilmeService, private router: ActivatedRoute,
-    private route: Router,) { }
+    private route: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
+    const userRoles = this.auth.hasAdminRole();
+    this.isAdmin = userRoles.includes('ROLE_ADMIN');
     this.id_filme = this.router.snapshot.paramMap.get('id')!;
     this.findById();
   }
@@ -44,6 +49,14 @@ export class FilmeinfoComponent implements OnInit {
     if (this.filme.estoque.status === 'DISPONIVEL') {
       const estoqueId = this.filme.estoque.id;
       this.route.navigateByUrl(`/reservar/${estoqueId}`);
+    }
+  }
+
+  voltar(): void {
+    if (this.isAdmin) {
+      this.route.navigate(['/filmes'])
+    } else {
+      this.route.navigate(['/lobbyFilme'])
     }
   }
 }

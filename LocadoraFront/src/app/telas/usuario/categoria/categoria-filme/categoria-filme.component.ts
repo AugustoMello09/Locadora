@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 import { FilmeService } from 'src/app/service/filme.service';
 
 @Component({
@@ -9,14 +10,18 @@ import { FilmeService } from 'src/app/service/filme.service';
 })
 export class CategoriaFilmeComponent implements OnInit {
 
+  isAdmin: boolean = false;
+
   id_categoria = '';
 
   filmePaged: any;
 
   constructor(private filmeService: FilmeService,
-    private router: ActivatedRoute, private route: Router,) { }
+    private router: ActivatedRoute, private route: Router, private auth: AuthService) { }
 
   ngOnInit(): void {
+    const userRoles = this.auth.hasAdminRole();
+    this.isAdmin = userRoles.includes('ROLE_ADMIN');
     this.id_categoria = this.router.snapshot.paramMap.get('id')!;
     this.readFilmes();
   }
@@ -29,5 +34,13 @@ export class CategoriaFilmeComponent implements OnInit {
         console.log(err)
       }
     )
+  }
+
+  voltar(): void {
+    if (this.isAdmin) {
+      this.route.navigate(['/categorias'])
+    } else {
+      this.route.navigate(['/lobbyCategorias'])
+    }
   }
 }

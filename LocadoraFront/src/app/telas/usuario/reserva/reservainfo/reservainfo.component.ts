@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReservaOnline } from 'src/app/model/reservaOnline.model';
+import { AuthService } from 'src/app/service/auth.service';
 import { ReservaService } from 'src/app/service/reserva.service';
 
 @Component({
@@ -18,10 +19,14 @@ export class ReservainfoComponent implements OnInit {
     statusReserva: ''
   }
 
+  isAdmin: boolean = false;
+
   constructor(private router: ActivatedRoute,
-    private route: Router, private reservaService: ReservaService) { }
+    private route: Router, private reservaService: ReservaService, private auth: AuthService) { }
 
   ngOnInit(): void {
+    const userRoles = this.auth.hasAdminRole();
+    this.isAdmin = userRoles.includes('ROLE_ADMIN');
     this.id_reserva = this.router.snapshot.paramMap.get('id')!;
     this.findById();
   }
@@ -36,6 +41,14 @@ export class ReservainfoComponent implements OnInit {
     this.reservaService.cancelar(this.id_reserva).subscribe(() => {
       this.route.navigate(['/reservas'])
     })
+  }
+
+  voltar(): void {
+    if (this.isAdmin) {
+      this.route.navigate(['/reservasAdm'])
+    } else {
+      this.route.navigate(['/reservas'])
+    }
   }
 
 }
