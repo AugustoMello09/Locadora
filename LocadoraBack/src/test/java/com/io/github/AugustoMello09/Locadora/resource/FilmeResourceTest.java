@@ -17,6 +17,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -24,7 +27,9 @@ import com.io.github.AugustoMello09.Locadora.dto.CategoriaDTO;
 import com.io.github.AugustoMello09.Locadora.dto.EstoqueDTO;
 import com.io.github.AugustoMello09.Locadora.dto.FilmeDTO;
 import com.io.github.AugustoMello09.Locadora.dto.FilmeDTOByCategory;
+import com.io.github.AugustoMello09.Locadora.dto.FilmeDTOInfo;
 import com.io.github.AugustoMello09.Locadora.dto.FilmeDTOUpdate;
+import com.io.github.AugustoMello09.Locadora.dto.FilmePagedDTO;
 import com.io.github.AugustoMello09.Locadora.entities.enums.StatusEstoque;
 import com.io.github.AugustoMello09.Locadora.entity.Categoria;
 import com.io.github.AugustoMello09.Locadora.entity.Estoque;
@@ -130,6 +135,31 @@ public class FilmeResourceTest {
 		assertNotNull(response.getBody().getCategoria());
 		assertNotNull(response.getBody().getEstoque());
 		verify(service).create(filmeDTO);
+	}
+	
+	@Test
+	void whenFindAllThenReturnFilmeDTO() {
+		 List<FilmeDTOInfo> info = new ArrayList<>();
+	     info.add(new FilmeDTOInfo(ID, NOME, null));
+	     when(service.findAllDrop()).thenReturn(info);  
+	     ResponseEntity<List<FilmeDTOInfo>> response = resource.findAllDropBox();
+	     assertNotNull(response);
+	     assertNotNull(response.getBody());
+		 assertEquals(HttpStatus.OK, response.getStatusCode());
+	}
+	
+	@Test
+	void whenFindAllThenReturnSuccess() {
+		List<FilmePagedDTO> fil = new ArrayList<>();
+		fil.add(new FilmePagedDTO(ID, NOME, DESCRIÇAO, DESCRIÇAO, null, QUANTIDADE, QUANTIDADE, QUANTIDADE));
+		Pageable pageable = Pageable.unpaged();
+		Page<FilmePagedDTO> filPage = new PageImpl<>(fil, pageable, fil.size());
+		when(service.findPaged(pageable)).thenReturn(filPage);
+		ResponseEntity<Page<FilmePagedDTO>> response = resource.findAllPaged(pageable);
+		assertNotNull(response);
+		assertNotNull(response.getBody());
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals(fil.size(), response.getBody().getSize());
 	}
 
 	@Test

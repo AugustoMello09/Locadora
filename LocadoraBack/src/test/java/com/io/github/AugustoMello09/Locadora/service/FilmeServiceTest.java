@@ -5,11 +5,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,12 +21,18 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import com.io.github.AugustoMello09.Locadora.Services.exception.ObjectNotFoundException;
 import com.io.github.AugustoMello09.Locadora.dto.CategoriaDTO;
 import com.io.github.AugustoMello09.Locadora.dto.EstoqueDTO;
 import com.io.github.AugustoMello09.Locadora.dto.FilmeDTO;
+import com.io.github.AugustoMello09.Locadora.dto.FilmeDTOInfo;
 import com.io.github.AugustoMello09.Locadora.dto.FilmeDTOUpdate;
+import com.io.github.AugustoMello09.Locadora.dto.FilmePagedDTO;
 import com.io.github.AugustoMello09.Locadora.entities.enums.StatusEstoque;
 import com.io.github.AugustoMello09.Locadora.entity.Categoria;
 import com.io.github.AugustoMello09.Locadora.entity.Estoque;
@@ -157,6 +167,32 @@ public class FilmeServiceTest {
 		assertEquals(NOME, response.getDiretor());
 		verify(repository).findById(ID);
 		verify(repository).save(any(Filme.class));
+	}
+	
+	@Test
+	void whenFindAllThenReturnListOfFilmeDTO() {
+        List<Filme> fil = new ArrayList<>();
+        fil.add(new Filme(ID, NOME, DESCRIÇAO, NOME, PRESO, categoria, estoque));
+        when(repository.findAll()).thenReturn(fil);
+        List<FilmeDTOInfo> fildto = service.findAllDrop();
+        verify(repository, times(1)).findAll();
+        List<FilmeDTOInfo> expectedDTOs = fil.stream().map(FilmeDTOInfo::new).collect(Collectors.toList());
+        assertNotNull(expectedDTOs);
+        assertNotNull(fildto);
+		
+	}
+	
+	
+	@Test
+	void whenFindAllPagedThenReturnPageOfFilmeDTO() {
+		List<Filme> fill = Arrays.asList(new Filme(ID, NOME, DESCRIÇAO, DESCRIÇAO, null, categoria, estoque));
+		Page<Filme> fillPage = new PageImpl<>(fill);
+		when(repository.findAll(any(Pageable.class))).thenReturn(fillPage);
+		Page<FilmePagedDTO> result = service.findPaged(PageRequest.of(0, 5));
+		assertNotNull(result);
+		for (FilmePagedDTO filDTO : result) {
+			assertEquals(FilmePagedDTO.class, filDTO.getClass());
+		}
 	}
 
 	private void startFilme() {
