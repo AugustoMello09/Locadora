@@ -3,6 +3,7 @@ package com.io.github.AugustoMello09.Locadora.resource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -61,6 +62,17 @@ public class CidadeResourceTest {
 		assertNotNull(response.getBody().getEstadoId());
 		assertEquals(ID, response.getBody().getEstadoId().getId());
 		assertEquals(ESTADO, response.getBody().getEstadoId().getName());
+	}
+	
+	@Test
+	void whenFindByNameThenReturnSuccess() {
+		when(service.findByNome(anyString())).thenReturn(cidadeDTO);
+		ResponseEntity<CidadeDTO> response = resource.findByNome(CIDADE);
+		assertNotNull(response);
+		assertNotNull(response.getBody());
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		assertEquals(ResponseEntity.class, response.getClass());
+		assertEquals(CIDADE, response.getBody().getName());	
 	}
 
 	@Test

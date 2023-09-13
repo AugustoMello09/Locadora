@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -68,6 +69,20 @@ public class CidadeServiceTest {
 		assertNotNull(response.getEstadoId());
 		assertEquals(ID, response.getEstadoId().getId());
 		assertEquals(ESTADO, response.getEstadoId().getName());
+	}
+	
+	@Test
+	void whenFindByNomeThenReturnSuccess() {
+		when(repository.findByName(anyString())).thenReturn(cidade);
+		CidadeDTO response = service.findByNome(CIDADE);
+		assertNotNull(response);
+		assertEquals(CidadeDTO.class, response.getClass());	
+	}
+	
+	@Test
+	void whenFindByNomeThenReturnNotFound() {
+		when(repository.findByName(anyString())).thenReturn(null);
+		assertThrows(ObjectNotFoundException.class, () -> service.findByNome(CIDADE));
 	}
 
 	@Test
