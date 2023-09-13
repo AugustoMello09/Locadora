@@ -39,7 +39,7 @@ public class EstoqueService {
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	public List<EstoqueDTO> findAll() {
 		List<Estoque> list = repository.findAll();
-		List<EstoqueDTO> listDto = list.stream().map(x -> new EstoqueDTO(x)).collect(Collectors.toList());
+		List<EstoqueDTO> listDto = list.stream().map(EstoqueDTO::new).collect(Collectors.toList());
 		return listDto;
 	}
 

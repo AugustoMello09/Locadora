@@ -9,6 +9,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -63,7 +66,18 @@ public class EstoqueResourceTest {
 		assertEquals(QUANTIDADE, response.getBody().getQuantidade());
 		assertEquals(UNDEFINED, response.getBody().getStatus());
 	}
-
+	
+	@Test
+	void whenFindAllThenReturnEstoqueDTO() {
+		 List<EstoqueDTO> estoquesDTOs = new ArrayList<>();
+	     estoquesDTOs.add(new EstoqueDTO(ID, QUANTIDADE, UNDEFINED, null, null, QUANTIDADE, QUANTIDADE, QUANTIDADE));
+	     when(service.findAll()).thenReturn(estoquesDTOs);  
+	     ResponseEntity<List<EstoqueDTO>> response = resource.findAll();
+	     assertNotNull(response);
+	     assertNotNull(response.getBody());
+		 assertEquals(HttpStatus.OK, response.getStatusCode());
+	}
+	
 	@Test
 	public void testCreate() {
 		when(service.create(any(EstoqueDTO.class))).thenReturn(estoqueDTO);
