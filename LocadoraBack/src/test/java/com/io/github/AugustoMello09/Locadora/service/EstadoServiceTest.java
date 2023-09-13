@@ -6,10 +6,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -60,7 +64,23 @@ public class EstadoServiceTest {
 		assertEquals(ID, response.getId());
 		assertEquals(ESTADO, response.getName());
 	}
-
+	
+	@Test
+	void whenFindAllThenReturnListOfEstadoDTO() {
+        List<Estado> estados = new ArrayList<>();
+        estados.add(new Estado(1L, "PR"));
+        estados.add(new Estado(2L, "MT"));
+        estados.add(new Estado(3L, "SP"));
+        when(repository.findAll()).thenReturn(estados);
+        List<EstadoDTO> estadosDTOs = service.findAll();
+        verify(repository, times(1)).findAll();
+        List<EstadoDTO> expectedDTOs = estados.stream().map(EstadoDTO::new).collect(Collectors.toList());
+        assertNotNull(expectedDTOs);
+        assertNotNull(estadosDTOs);
+		
+	}	
+	
+	
 	@Test
 	void whenFindByIdThenThrowObjectNotFoundException() {
 		when(repository.findById(anyLong())).thenReturn(Optional.empty());

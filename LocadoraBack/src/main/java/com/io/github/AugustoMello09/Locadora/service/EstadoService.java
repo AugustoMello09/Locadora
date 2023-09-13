@@ -2,6 +2,7 @@ package com.io.github.AugustoMello09.Locadora.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -50,9 +51,10 @@ public class EstadoService {
 	
 	@Transactional
 	@PreAuthorize("hasAnyRole('ADMIN','OPERATOR')")
-	public List<Estado> findAll() {
+	public List<EstadoDTO> findAll() {
 		List<Estado> list = repository.findAll();
-		return list;	
+		List<EstadoDTO> listDto = list.stream().map(EstadoDTO::new).collect(Collectors.toList());
+		return listDto;	
 	}
 
 }

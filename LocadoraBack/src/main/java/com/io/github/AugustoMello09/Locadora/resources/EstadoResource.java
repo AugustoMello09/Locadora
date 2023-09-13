@@ -2,7 +2,6 @@ package com.io.github.AugustoMello09.Locadora.resources;
 
 import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.io.github.AugustoMello09.Locadora.dto.EstadoDTO;
-import com.io.github.AugustoMello09.Locadora.entity.Estado;
 import com.io.github.AugustoMello09.Locadora.service.EstadoService;
 
 @RestController
@@ -36,8 +34,7 @@ public class EstadoResource {
 	
 	@GetMapping
 	public ResponseEntity<List<EstadoDTO>> findAll(){
-		List<Estado> list = service.findAll();
-		List<EstadoDTO> listDto = list.stream().map(x -> new EstadoDTO(x)).collect(Collectors.toList());
+		List<EstadoDTO> listDto = service.findAll();
 		return ResponseEntity.ok().body(listDto);
 	}
 	
