@@ -8,11 +8,12 @@
     <div class="p-4">
     
       <p-table
+        class="tabela"
         [value]="userPaged"
         [showCurrentPageReport]="true"
-        [tableStyle]="{ 'width': '100%'}"
         currentPageReportTemplate="{first} De {last}"
         [rowsPerPageOptions]="[5, 10, 15, 20, 25]"
+        [responsive]="false"
       >
         <ng-template pTemplate="header">
           <tr class="title">

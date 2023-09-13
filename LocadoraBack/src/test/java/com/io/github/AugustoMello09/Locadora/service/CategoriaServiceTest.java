@@ -7,13 +7,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -49,6 +52,8 @@ public class CategoriaServiceTest {
 	private CategoriaDTO categoriaDTO;
 
 	private Optional<Categoria> optionalCategoria;
+	
+	private Categoria categoria;
 
 	@BeforeEach
 	void setUp() {
@@ -71,7 +76,22 @@ public class CategoriaServiceTest {
 		when(repository.findById(anyLong())).thenReturn(Optional.empty());
 		assertThrows(ObjectNotFoundException.class, () -> service.findById(ID));
 	}
-
+	
+	@Test
+	void whenFindAllThenReturnListOfCategoriaDTO() {
+        List<Categoria> categorias = new ArrayList<>();
+        categorias.add(new Categoria(1L, "Categoria1"));
+        categorias.add(new Categoria(2L, "Categoria2"));
+        categorias.add(new Categoria(3L, "Categoria3"));
+        when(repository.findAll()).thenReturn(categorias);
+        List<CategoriaDTO> categoriaDTOs = service.findAll();
+        verify(repository, times(1)).findAll();
+        List<CategoriaDTO> expectedDTOs = categorias.stream().map(CategoriaDTO::new).collect(Collectors.toList());
+        assertNotNull(expectedDTOs);
+        assertNotNull(categoriaDTOs);
+		
+	}
+	
 	@Test
 	void whenFindAllPagedThenReturnPageOfCategoriaDTO() {
 		List<Categoria> categorias = Arrays.asList(new Categoria(ID, NOME_CATEGORIA), new Categoria(2L, "Categoria 2"));
@@ -135,7 +155,7 @@ public class CategoriaServiceTest {
 
 	private void startCategoria() {
 		categoriaDTO = new CategoriaDTO(ID, NOME_CATEGORIA);
-		Categoria categoria = new Categoria(ID, NOME_CATEGORIA);
+        categoria = new Categoria(ID, NOME_CATEGORIA);
 		optionalCategoria = Optional.of(categoria);
 	}
 

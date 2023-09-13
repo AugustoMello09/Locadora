@@ -1,4 +1,4 @@
-package com.io.github.AugustoMello09.Locadora.service;
+ package com.io.github.AugustoMello09.Locadora.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +36,7 @@ public class CategoriaService {
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	public List<CategoriaDTO> findAll() {
 		List<Categoria> list = repository.findAll();
-		List<CategoriaDTO> listDto = list.stream().map(x -> new CategoriaDTO(x)).collect(Collectors.toList());
+		List<CategoriaDTO> listDto = list.stream().map(CategoriaDTO::new).collect(Collectors.toList());
 		return listDto;
 	}
 	

@@ -62,7 +62,22 @@ public class CategoriaResourceTest {
 		assertEquals(NOME_CATEGORIA, response.getBody().getNomeCategoria());
 
 	}
-
+	
+	@Test
+	void whenFindAllThenReturnCategoriaDTO() {
+		 List<CategoriaDTO> categoriaDTOs = new ArrayList<>();
+	        categoriaDTOs.add(new CategoriaDTO(1L, "Categoria1"));
+	        categoriaDTOs.add(new CategoriaDTO(2L, "Categoria2"));
+	     
+	     when(service.findAll()).thenReturn(categoriaDTOs);  
+	     
+	     ResponseEntity<List<CategoriaDTO>> response = resource.findAll();
+	     
+	     assertNotNull(response);
+	     assertNotNull(response.getBody());
+		 assertEquals(HttpStatus.OK, response.getStatusCode());
+	}
+	
 	@Test
 	void whenFindAllThenReturnSuccess() {
 		List<CategoriaDTO> categoriaDTOList = new ArrayList<>();
