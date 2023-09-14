@@ -5,3 +5,9 @@
 .ti td {
   text-align: center;
 }
+
+th {
+  border-left: 1px solid #C8C8C8 !important;
+  border-right: 1px solid #C8C8C8 !important;
+  border-top: 1px solid #C8C8C8 !important;
+ }

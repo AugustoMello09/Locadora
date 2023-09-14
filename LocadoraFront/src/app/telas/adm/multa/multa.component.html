@@ -13,6 +13,7 @@
         [tableStyle]="{ 'width': '100%'}"
         currentPageReportTemplate="{first} De {last}"
         [rowsPerPageOptions]="[5, 10, 15, 20, 25]"
+        responsiveLayout="scroll"
       >
         <ng-template pTemplate="header">
           <tr class="title">
@@ -25,7 +26,7 @@
         <ng-template pTemplate="body" let-multas>
           <tr class="ti">
            
-            <td class="text-black font-bold">R${{multas.valor}}</td>
+            <td class="text-black font-bold"><span class="text-green-400">R$</span>{{multas.valor}}</td>
             <td class="text-black font-bold">{{multas.pagamento}}</td>
             
           </tr>
