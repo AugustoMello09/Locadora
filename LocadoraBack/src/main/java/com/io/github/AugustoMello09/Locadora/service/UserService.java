@@ -108,7 +108,7 @@ public class UserService implements UserDetailsService {
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	public UserDTO cargo(UserDTO fil, Long id) {
 		User entity = repository.findById(id)
-				.orElseThrow(() -> new ObjectNotFoundException("Usuário não encotrado"));
+				.orElseThrow(() -> new ObjectNotFoundException("Usuário não encontrado"));
 		associateRoles(entity, fil);
 		entity = repository.save(entity);
 		return new UserDTO(entity);		

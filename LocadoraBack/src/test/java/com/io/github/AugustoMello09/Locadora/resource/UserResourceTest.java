@@ -9,7 +9,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -25,6 +27,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.io.github.AugustoMello09.Locadora.dto.UserDTO;
+import com.io.github.AugustoMello09.Locadora.dto.UserDTOInfo;
 import com.io.github.AugustoMello09.Locadora.dto.UserDTOUpdate;
 import com.io.github.AugustoMello09.Locadora.dto.UserInsertDTO;
 import com.io.github.AugustoMello09.Locadora.dto.UserPagedDTO;
@@ -113,6 +116,30 @@ public class UserResourceTest {
 		assertEquals(NOME, response.getBody().getName());
 		assertEquals(EMAIL, response.getBody().getEmail());
 		verify(service).update(userDTOUpdate, ID);
+	}
+	
+	@Test
+	public void testUpdateCargo() {
+		when(service.cargo(userDTO, ID)).thenReturn(userDTO);
+		ResponseEntity<UserDTO> response = resource.cargo(userDTO, ID);
+		assertNotNull(response);
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		verify(service).cargo(userDTO, ID);
+	}
+	
+	@Test
+	void whenFindAllThenReturnUserDTO() {
+		 List<UserDTOInfo> dTOs = new ArrayList<>();
+	        dTOs.add(new UserDTOInfo(ID, CPF, EMAIL));
+	        
+	     
+	     when(service.findAllDrop()).thenReturn(dTOs);  
+	     
+	     ResponseEntity<List<UserDTOInfo>> response = resource.findAllDrop();
+	     
+	     assertNotNull(response);
+	     assertNotNull(response.getBody());
+		 assertEquals(HttpStatus.OK, response.getStatusCode());
 	}
 
 	@Test

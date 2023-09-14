@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -76,7 +77,7 @@ public class UserServiceTest {
 
 	@Mock
 	private BCryptPasswordEncoder passwordEncoder;
-	
+
 	@Mock
 	private AuthService authService;
 
@@ -86,7 +87,7 @@ public class UserServiceTest {
 		startUser();
 	}
 
-	@Test
+	@Test //
 	void whenFindByIdThenReturnUserDTO() {
 		authService.validateSelfOrAdmin(ID);
 		when(repository.findById(anyLong())).thenReturn(optionalUser);
@@ -100,13 +101,13 @@ public class UserServiceTest {
 
 	}
 
-	@Test
+	@Test //
 	void whenFindByIdThenThrowObjectNotFoundException() {
 		when(repository.findById(anyLong())).thenReturn(Optional.empty());
 		assertThrows(ObjectNotFoundException.class, () -> service.findById(ID));
 	}
 
-	@Test
+	@Test //
 	void whenFindAllPagedThenReturnPageOfUserDTO() {
 		List<User> users = Arrays.asList(new User(ID, NOME, EMAIL, CPF, "123"),
 				new User(2L, "a", "email@aaa.com", "123.456.456.48", "123"));
@@ -121,7 +122,7 @@ public class UserServiceTest {
 		}
 	}
 
-	@Test
+	@Test //
 	void whenFindAllPagedThenReturnEmptyPage() {
 		Page<User> userPage = new PageImpl<>(Collections.emptyList());
 		when(repository.findAll(any(Pageable.class))).thenReturn(userPage);
@@ -130,7 +131,7 @@ public class UserServiceTest {
 		assertTrue(result.isEmpty());
 	}
 
-	@Test
+	@Test //
 	public void testCreate() {
 		when(repository.save(any(User.class))).thenReturn(user);
 		when(roleRepository.findById(anyLong())).thenReturn(optionalRole);
@@ -144,7 +145,7 @@ public class UserServiceTest {
 		verify(repository, times(1)).save(any(User.class));
 	}
 
-	@Test
+	@Test //
 	public void testCopyToEntity() {
 		UserDTO userDto = new UserDTO();
 		userDto.setName("John Doe");
@@ -169,7 +170,29 @@ public class UserServiceTest {
 		assertEquals(1, user.getRoles().size());
 	}
 
-	@Test
+	@Test //
+	public void associateRoles() {
+		UserDTO userDto = new UserDTO();
+		userDto.setName("John Doe");
+		userDto.setCpf("123456789");
+		userDto.setEmail("john.doe@example.com");
+
+		RoleDTO roleDto = new RoleDTO();
+		roleDto.setId(1L);
+		userDto.getRoles().add(roleDto);
+
+		User user = new User();
+
+		when(roleRepository.findById(roleDto.getId())).thenReturn(Optional.of(new Role()));
+
+		service.associateRoles(user, userDto);
+
+		verify(roleRepository, times(1)).findById(roleDto.getId());
+
+		assertEquals(1, user.getRoles().size());
+	}
+
+	@Test //
 	void whenUpdateUserThenReturnUserDTO() {
 		Long id = 1L;
 		UserDTOUpdate objDto = new UserDTOUpdate("Novo Nome", "novoemail@gmail.com");
@@ -184,6 +207,16 @@ public class UserServiceTest {
 		assertEquals(objDto.getEmail(), result.getEmail());
 		verify(repository, times(1)).findById(id);
 		verify(repository, times(1)).save(any(User.class));
+	}
+
+	@Test
+	public void testCargo() {
+		Long id = 1L;
+		when(repository.findById(id)).thenReturn(Optional.of(user));
+		when(roleRepository.findById(eq(ID))).thenReturn(Optional.of(new Role()));
+		when(repository.save(any(User.class))).thenReturn(user);
+		UserDTO result = service.cargo(userDTO, id);
+		assertNotNull(result);
 	}
 
 	@Test
