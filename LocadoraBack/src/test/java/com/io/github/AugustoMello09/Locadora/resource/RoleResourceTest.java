@@ -8,6 +8,9 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -81,6 +84,21 @@ public class RoleResourceTest {
 		assertEquals(ResponseEntity.class, response.getClass());
 		verify(service, times(1)).delete(anyLong());
 		assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+	}
+	
+	@Test
+	void whenFindAllThenReturnRoleDTO() {
+		 List<RoleDTO> dTOs = new ArrayList<>();
+	        dTOs.add(new RoleDTO(1L, "Dono"));
+	        
+	     
+	     when(service.findAll()).thenReturn(dTOs);  
+	     
+	     ResponseEntity<List<RoleDTO>> response = resource.findAll();
+	     
+	     assertNotNull(response);
+	     assertNotNull(response.getBody());
+		 assertEquals(HttpStatus.OK, response.getStatusCode());
 	}
 
 	private void startRole() {

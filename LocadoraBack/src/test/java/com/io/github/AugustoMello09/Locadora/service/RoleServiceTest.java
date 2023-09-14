@@ -6,10 +6,14 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -75,6 +79,19 @@ public class RoleServiceTest {
 		assertEquals(RoleDTO.class, response.getClass());
 		assertEquals(ID, response.getId());
 		assertEquals(NOME_ROLE, response.getAuthority());
+	}
+	
+	@Test
+	void whenFindAllThenReturnListOfCategoriaDTO() {
+        List<Role> ro = new ArrayList<>();
+        ro.add(new Role(1L, "Dono"));
+        when(repository.findAll()).thenReturn(ro);
+        List<RoleDTO> dTOs = service.findAll();
+        verify(repository, times(1)).findAll();
+        List<RoleDTO> expectedDTOs = ro.stream().map(RoleDTO::new).collect(Collectors.toList());
+        assertNotNull(expectedDTOs);
+        assertNotNull(dTOs);
+		
 	}
 
 	@Test
