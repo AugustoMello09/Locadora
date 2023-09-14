@@ -12,7 +12,10 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,6 +29,7 @@ import com.io.github.AugustoMello09.Locadora.Services.exception.DataIntegratyVio
 import com.io.github.AugustoMello09.Locadora.Services.exception.ObjectNotFoundException;
 import com.io.github.AugustoMello09.Locadora.dto.FilmeDTO;
 import com.io.github.AugustoMello09.Locadora.dto.LocacaoDTO;
+import com.io.github.AugustoMello09.Locadora.dto.LocacaoDTOPList;
 import com.io.github.AugustoMello09.Locadora.dto.UserDTO;
 import com.io.github.AugustoMello09.Locadora.entities.enums.FormaPagamento;
 import com.io.github.AugustoMello09.Locadora.entities.enums.StatusEstoque;
@@ -125,6 +129,18 @@ public class LocacaoServiceTest {
 	public void whenFindByIdThenThrowObjectNotFoundException() {
 		when(repository.findById(anyLong())).thenReturn(Optional.empty());
 		assertThrows(ObjectNotFoundException.class, () -> service.findById(ID));
+	}
+	
+	@Test
+	void whenFindAllThenReturnListOfLocacaoDTO() {
+        List<Locacao> lo = new ArrayList<>();
+        lo.add(new Locacao(ID, QUANTIDADE, null, user, filme, BOLETO));
+        when(repository.findAll()).thenReturn(lo);
+        List<LocacaoDTOPList> loDTOs = service.findAll();
+        verify(repository, times(1)).findAll();
+        List<LocacaoDTOPList> expectedDTOs = lo.stream().map(LocacaoDTOPList::new).collect(Collectors.toList());
+        assertNotNull(expectedDTOs);
+        assertNotNull(loDTOs);	
 	}
 
 	@Test

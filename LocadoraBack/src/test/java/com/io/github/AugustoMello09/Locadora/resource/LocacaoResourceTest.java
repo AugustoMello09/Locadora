@@ -6,6 +6,9 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -17,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 
 import com.io.github.AugustoMello09.Locadora.dto.FilmeDTO;
 import com.io.github.AugustoMello09.Locadora.dto.LocacaoDTO;
+import com.io.github.AugustoMello09.Locadora.dto.LocacaoDTOPList;
 import com.io.github.AugustoMello09.Locadora.dto.UserDTO;
 import com.io.github.AugustoMello09.Locadora.entities.enums.FormaPagamento;
 import com.io.github.AugustoMello09.Locadora.repositories.LocacaoRepository;
@@ -94,6 +98,21 @@ public class LocacaoResourceTest {
 		assertNotNull(response);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		verify(service).devolver(ID, locacaoDTO);
+	}
+	
+	@Test
+	void whenFindAllThenReturnLocacaoDTO() {
+		 List<LocacaoDTOPList> li = new ArrayList<>();
+	        li.add(new LocacaoDTOPList(ID, QUANTIDADE, BOLETO, null, null, null));
+	       
+	     
+	     when(service.findAll()).thenReturn(li);  
+	     
+	     ResponseEntity<List<LocacaoDTOPList>> response = resource.findAll();
+	     
+	     assertNotNull(response);
+	     assertNotNull(response.getBody());
+		 assertEquals(HttpStatus.OK, response.getStatusCode());
 	}
 
 	@Test
