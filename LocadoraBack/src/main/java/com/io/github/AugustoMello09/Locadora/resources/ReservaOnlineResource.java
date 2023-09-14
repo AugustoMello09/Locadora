@@ -2,7 +2,6 @@ package com.io.github.AugustoMello09.Locadora.resources;
 
 import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -20,7 +19,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.io.github.AugustoMello09.Locadora.dto.ReservaOnlineDTO;
 import com.io.github.AugustoMello09.Locadora.dto.ReservaOnlineDTOInsert;
-import com.io.github.AugustoMello09.Locadora.entity.ReservaOnline;
 import com.io.github.AugustoMello09.Locadora.service.ReservaOnlineService;
 
 @RestController
@@ -44,8 +42,7 @@ public class ReservaOnlineResource {
 	
 	@GetMapping(value = "/lista")
 	public ResponseEntity<List<ReservaOnlineDTO>> findAll(){
-		List<ReservaOnline> list = service.findAll();
-		List<ReservaOnlineDTO> listDto = list.stream().map(x -> new ReservaOnlineDTO(x)).collect(Collectors.toList());
+		List<ReservaOnlineDTO> listDto = service.findAll();
 		return ResponseEntity.ok().body(listDto);
 	}
 	

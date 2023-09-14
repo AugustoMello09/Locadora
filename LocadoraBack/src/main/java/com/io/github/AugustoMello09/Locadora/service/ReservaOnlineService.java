@@ -2,6 +2,7 @@ package com.io.github.AugustoMello09.Locadora.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -48,9 +49,10 @@ public class ReservaOnlineService {
 	
 	@Transactional
 	@PreAuthorize("hasAnyRole('ADMIN')")
-	public List<ReservaOnline> findAll() {
+	public List<ReservaOnlineDTO> findAll() {
 		List<ReservaOnline> lista = repository.findAll();
-		return lista;
+		List<ReservaOnlineDTO> listDto = lista.stream().map(ReservaOnlineDTO::new).collect(Collectors.toList());
+		return listDto;
 	}
 	
 	@Transactional

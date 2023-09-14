@@ -7,6 +7,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +16,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -85,7 +90,35 @@ public class ReservaOnlineResourceTest {
 		assertEquals(ATIVA, response.getBody().getStatusReserva());
 		verify(service).create(reservaOnlineDTOInsert);
 	}
-
+	
+	@Test
+	void whenFindAllThenReturnReservaOnlineDTO() {
+		 List<ReservaOnlineDTO> dto = new ArrayList<>();
+	        dto.add(new ReservaOnlineDTO(ID, QUANTIDADE, DATA, ATIVA));
+	        
+	     
+	     when(service.findAll()).thenReturn(dto);  
+	     
+	     ResponseEntity<List<ReservaOnlineDTO>> response = resource.findAll();
+	     
+	     assertNotNull(response);
+	     assertNotNull(response.getBody());
+		 assertEquals(HttpStatus.OK, response.getStatusCode());
+	}
+	
+	@Test
+	void whenFindAllThenReturnSuccessReserva() {
+		List<ReservaOnlineDTO> dTOList = new ArrayList<>();
+		dTOList.add(new ReservaOnlineDTO(ID, QUANTIDADE, DATA, ATIVA));
+		Pageable pageable = Pageable.unpaged();
+		Page<ReservaOnlineDTO> rePage = new PageImpl<>(dTOList, pageable, dTOList.size());
+		when(service.findAllPaged(pageable)).thenReturn(rePage);
+		ResponseEntity<Page<ReservaOnlineDTO>> response = resource.findAllPaged(pageable);
+		assertNotNull(response);
+		assertNotNull(response.getBody());
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+	}
+	
 	@Test
 	public void testDelete() {
 		ResponseEntity<Void> response = resource.cancelar(ID);

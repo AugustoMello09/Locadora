@@ -6,13 +6,18 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +26,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import com.io.github.AugustoMello09.Locadora.Services.exception.DataIntegratyViolationException;
 import com.io.github.AugustoMello09.Locadora.Services.exception.ObjectNotFoundException;
@@ -56,6 +65,9 @@ public class ReservaOnlineServiceTest {
 
 	@Mock
 	private EstoqueRepository estoqueRepository;
+	
+	@Mock
+	private AuthService authService;
 
 	@InjectMocks
 	private ReservaOnlineService service;
@@ -99,6 +111,38 @@ public class ReservaOnlineServiceTest {
 		Long idEstoque = 1L;
 		when(estoqueRepository.findById(idEstoque)).thenReturn(Optional.empty());
 		assertThrows(ObjectNotFoundException.class, () -> service.create(reservaOnlineDTOInsert));
+	}
+	
+	@Test
+	public void whenFindAllThenReturnListOfReservaOnlineDTO() {
+        List<ReservaOnline> on = new ArrayList<>();
+        on.add(new ReservaOnline(ID, QUANTIDADE, DATA, user, estoque, ATIVA));
+     
+        when(repository.findAll()).thenReturn(on);
+        List<ReservaOnlineDTO> dTOs = service.findAll();
+        verify(repository, times(1)).findAll();
+        List<ReservaOnlineDTO> expectedDTOs = on.stream().map(ReservaOnlineDTO::new).collect(Collectors.toList());
+        assertNotNull(expectedDTOs);
+        assertNotNull(dTOs);
+		
+	}
+	
+	@Test
+	void whenFindAllPagedThenReturnPageOfReservaOnlineDTO() {
+			
+        User usuarioAutenticado = new User();
+        usuarioAutenticado.setId(1L);
+        when(authService.authenticated()).thenReturn(usuarioAutenticado);
+		
+		List<ReservaOnline> re = Arrays.asList(new ReservaOnline(ID, QUANTIDADE, DATA, user, estoque, ATIVA));
+		Page<ReservaOnline> rePage = new PageImpl<>(re);
+		
+
+		when(repository.findByUser_Id(eq(1L), any(Pageable.class))).thenReturn(rePage);
+		
+		Page<ReservaOnlineDTO> result = service.findAllPaged(PageRequest.of(0, 5));
+		
+		assertNotNull(result);
 	}
 
 	@Test 
