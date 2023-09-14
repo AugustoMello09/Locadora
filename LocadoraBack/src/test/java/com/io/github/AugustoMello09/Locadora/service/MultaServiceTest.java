@@ -10,7 +10,10 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -69,6 +72,19 @@ public class MultaServiceTest {
 	public void whenFindByIdThenThrowObjectNotFoundException() {
 		when(repository.findById(anyLong())).thenReturn(Optional.empty());
 		assertThrows(ObjectNotFoundException.class, () -> service.findById(ID));
+	}
+	
+	@Test
+	void whenFindAllThenReturnListOfMultaDTO() {
+        List<Multa> mu = new ArrayList<>();
+        mu.add(new Multa(ID, PRESO, null, EstadoPagamento.CANCELADO));
+        when(repository.findAll()).thenReturn(mu);
+        List<MultaDTO> muDTOs = service.findAll();
+        verify(repository, times(1)).findAll();
+        List<MultaDTO> expectedDTOs = mu.stream().map(MultaDTO::new).collect(Collectors.toList());
+        assertNotNull(expectedDTOs);
+        assertNotNull(muDTOs);
+		
 	}
 
 	 @Test

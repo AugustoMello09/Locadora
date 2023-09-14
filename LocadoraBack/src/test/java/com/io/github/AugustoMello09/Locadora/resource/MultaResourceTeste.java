@@ -6,6 +6,9 @@ import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -69,6 +72,21 @@ public class MultaResourceTeste {
 		assertNotNull(response);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 		verify(service).pagarMultaBoleto(pagamentoDTO);
+	}
+	
+	@Test
+	void whenFindAllThenReturnMultaDTO() {
+		 List<MultaDTO> dTOs = new ArrayList<>();
+	        dTOs.add(new MultaDTO(ID, 100.00, EstadoPagamento.PENDENTE));
+	       
+	     
+	     when(service.findAll()).thenReturn(dTOs);  
+	     
+	     ResponseEntity<List<MultaDTO>> response = resource.findAll();
+	     
+	     assertNotNull(response);
+	     assertNotNull(response.getBody());
+		 assertEquals(HttpStatus.OK, response.getStatusCode());
 	}
 
 	@Test
