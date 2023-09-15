@@ -30,7 +30,7 @@
                 </div>
               
                 <label for="password" class="text-custom-font-secundario text-lg font-font-secundaria font-semibold">Password</label>
-                <p-password name="password" [(ngModel)]="user.password" [toggleMask]="true"  minlength="3" maxlength="24"  ngModel type="text" required placeholder="Ex. 123456"></p-password>
+                <p-password name="password" [feedback]="false" [(ngModel)]="user.password" [toggleMask]="true"  minlength="3" maxlength="24"  ngModel type="text" required placeholder="Ex. 123456"></p-password>
                 <div *ngIf="(f.controls['password']?.invalid && f.controls['password']?.touched) || f.controls['password']?.dirty">
                   <span class="text-custom-botao font-font-secundaria font-bold text-sm" *ngIf="f.controls['password']?.errors?.['required']">O campo Senha deve ser preenchido.</span>
                   <span class="text-custom-botao font-font-secundaria font-bold text-sm" *ngIf="f.controls['password']?.errors?.['minlength']">O campo Senha deve ter no mínimo 2 números.</span>

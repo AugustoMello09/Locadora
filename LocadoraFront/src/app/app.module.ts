@@ -55,6 +55,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { TooltipModule } from 'primeng/tooltip';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,6 +111,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
     SidebarModule,
     TooltipModule,
     ProgressSpinnerModule
+
   ],
   providers: [
     AuthService,

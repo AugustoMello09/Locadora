@@ -18,7 +18,7 @@
       
       <div class="text-center">
         <h4 class="text-custom-font-secundario text-lg font-font-secundaria font-bold p-3">Senha</h4>
-        <p-password name="password" [(ngModel)]="login.password" [toggleMask]="true" minlength="2" maxlength="24" ngModel required></p-password>
+        <p-password name="password" [feedback]="false" [(ngModel)]="login.password" [toggleMask]="true" minlength="2" maxlength="24" ngModel required></p-password>
         <div *ngIf="(loginForm.controls['password']?.invalid && loginForm.controls['password']?.touched) || loginForm.controls['password']?.dirty">
           <span class="text-custom-botao font-font-secundaria font-bold text-sm" *ngIf="loginForm.controls['password']?.errors?.['required']">O campo password deve ser preenchido.</span>
         </div>
