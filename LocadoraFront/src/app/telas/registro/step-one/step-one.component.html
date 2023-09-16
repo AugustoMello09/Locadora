@@ -7,7 +7,7 @@
         <h2 class="text-custom-font-destaque text-2xl font-font-primaria font-bold">Loque<span class="text-custom-span">Dog</span></h2>
       </header>
   
-        <div class="flex items-center justify-center  flex-col">
+        <div class="flex items-center justify-center  flex-col  ">
           <div>
             <p class="text-custom-font-secundario text-base font-font-secundaria font-semibold p-2">Para iniciar seu cadastrado, precisamos de algumas informações pessoais. Por favor, informe seu nome completo, endereço de e-mail, número de CPF e senha.</p>
           </div>
@@ -30,7 +30,7 @@
                 </div>
               
                 <label for="password" class="text-custom-font-secundario text-lg font-font-secundaria font-semibold">Password</label>
-                <p-password name="password" [feedback]="false" [(ngModel)]="user.password" [toggleMask]="true"  minlength="3" maxlength="24"  ngModel type="text" required placeholder="Ex. 123456"></p-password>
+                <p-password name="password" [feedback]="false" [(ngModel)]="user.password" [toggleMask]="true"  minlength="3" maxlength="24"  ngModel type="text" required placeholder="Ex. 123456" class="w-full"></p-password>
                 <div *ngIf="(f.controls['password']?.invalid && f.controls['password']?.touched) || f.controls['password']?.dirty">
                   <span class="text-custom-botao font-font-secundaria font-bold text-sm" *ngIf="f.controls['password']?.errors?.['required']">O campo Senha deve ser preenchido.</span>
                   <span class="text-custom-botao font-font-secundaria font-bold text-sm" *ngIf="f.controls['password']?.errors?.['minlength']">O campo Senha deve ter no mínimo 2 números.</span>
@@ -45,7 +45,7 @@
               </div>
               
               <div>
-                <button (click)="create()" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 rounded-2xl mt-4">Próximo</button>
+                <button (click)="create()" class="bg-custom-botao text-custom-font-destaque shadow-cyan-500/50 hover:text-gray-800 hover:bg-custom-span shadow-lg font-bold font-font-primaria p-4 w-full rounded-2xl mt-4">Próximo</button>
                 <p-messages [value]="message1" class="mx-4"></p-messages>
               </div>
           
