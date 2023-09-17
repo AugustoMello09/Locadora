@@ -32,6 +32,8 @@ public class LocacaoDTOPList implements Serializable{
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDateTime dataMaxDevolucao;
 	
+	private UserDTOInfo user;
+	
 	public LocacaoDTOPList() {}
 	
 	public LocacaoDTOPList(Locacao entity) {
@@ -41,6 +43,7 @@ public class LocacaoDTOPList implements Serializable{
 		dataDevolucao = entity.getDataDevolucao();
 		dataLocacao = entity.getDataLocacao();
 		dataMaxDevolucao = entity.getDataMaxDevolucao();
+		user = new UserDTOInfo(entity.getUser());
 	}
 	
 }

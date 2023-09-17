@@ -22,6 +22,7 @@
             <th class="font-font-primaria font-bold text-lg text-black">Data locação</th>
             <th class="font-font-primaria font-bold text-lg text-black">Data Max devolução</th>
             <th class="font-font-primaria font-bold text-lg text-black">Data devolução</th>
+            <th class="font-font-primaria font-bold text-lg text-black">Usuário</th>
           </tr>
 
         </ng-template>
@@ -39,6 +40,7 @@
                 <i class="pi pi-question-circle text-custom-span" style="font-size: 1.5rem" pTooltip="Usuário ainda não faz a devolução"></i>
               </ng-template>
             </td>
+            <td class="text-black font-bold">{{ locacao.user.name }}</td>
        
           </tr>
         

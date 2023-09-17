@@ -103,7 +103,7 @@ public class LocacaoResourceTest {
 	@Test
 	void whenFindAllThenReturnLocacaoDTO() {
 		 List<LocacaoDTOPList> li = new ArrayList<>();
-	        li.add(new LocacaoDTOPList(ID, QUANTIDADE, BOLETO, null, null, null));
+	        li.add(new LocacaoDTOPList(ID, QUANTIDADE, BOLETO, null, null, null, null));
 	       
 	     
 	     when(service.findAll()).thenReturn(li);  
