@@ -27,7 +27,6 @@ export class LocacaoComponent implements OnInit {
   lista(): void {
     this.locacaoService.findAll().subscribe(data => {
       this.locacaoPaged = data;
-      console.log(this.locacaoPaged);
     })
   }
 
