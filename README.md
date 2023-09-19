@@ -60,9 +60,13 @@ __Acesse a documentação do projeto:__
 
 ## Conta do Administrador 
 
+Login:adm@gmail.com Senha:123456
+
 https://github.com/AugustoMello09/Locadora/assets/101072311/f1953d23-086d-4aa2-8e8a-4c10969b1525
 
 ## Conta do Usuário
+
+Login:usuario@gmail.com Senha:123456
 
 https://github.com/AugustoMello09/Locadora/assets/101072311/1811dfa0-136c-42b7-bfc4-9415e993b73c
 
